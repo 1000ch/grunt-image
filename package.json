@@ -1,0 +1,24 @@
+{
+  "name": "node-image-optimize",
+  "version": "0.0.0",
+  "description": "Optimize image with node process.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/1000ch/node-image-optimize.git"
+  },
+  "author": "1000ch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1000ch/node-image-optimize/issues"
+  },
+  "homepage": "https://github.com/1000ch/node-image-optimize",
+  "dependencies": {
+    "pngquant-bin": "~0.1.5",
+    "gifsicle": "~0.1.4",
+    "jpegtran-bin": "~0.2.3",
+    "optipng-bin": "~0.3.1",
+    "node-advpng": "0.0.2",
+    "pngcrush": "0.0.3"
+  }
+}
