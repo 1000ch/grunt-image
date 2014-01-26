@@ -1,24 +1,31 @@
 {
-  "name": "node-image-optimize",
+  "name": "grunt-imgopt",
   "version": "0.0.0",
-  "description": "Optimize image with node process.",
-  "main": "index.js",
+  "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
     "url": "git://github.com/1000ch/node-image-optimize.git"
   },
-  "author": "1000ch",
+  "author": {
+    "name": "1000ch"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/1000ch/node-image-optimize/issues"
   },
   "homepage": "https://github.com/1000ch/node-image-optimize",
   "dependencies": {
-    "pngquant-bin": "~0.1.5",
     "gifsicle": "~0.1.4",
     "jpegtran-bin": "~0.2.3",
     "optipng-bin": "~0.3.1",
-    "node-advpng": "0.0.2",
-    "pngcrush": "0.0.3"
+    "async": "~0.2.10"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-jsvalidate": "~0.2.2"
   }
 }
