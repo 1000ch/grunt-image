@@ -1,3 +1,5 @@
+var path = require('path');
+
 var duplex = require('duplexer');
 var spawn = require('child_process').spawn;
 var through = require('through2');
@@ -7,7 +9,9 @@ var filesize = require('filesize');
 
 function ImgOpt(options) {
   this.options = options || {};
-  this.extension = options.extension || {};
+  this.src = options.src || '';
+  this.dest = options.dest || '';
+  this.extension = path.extname(options.extension);
   this.optimizers = this.getOptimizers(this.extension);
 }
 
@@ -65,8 +69,4 @@ ImgOpt.prototype.optimize = function () {
   });
 };
 
-module.exports = function (options) {
-  var imgopt = new ImgOpt(options);
-  
-  return imgopt.optimize();
-};
+module.exports = ImgOpt;

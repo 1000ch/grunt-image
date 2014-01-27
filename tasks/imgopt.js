@@ -1,8 +1,11 @@
 "use strict";
 
+var fs = require('fs');
+var path = require('path');
+
 var async = require('async');
 var chalk = require('chalk');
-var imgopt = require('./lib/imgopt');
+var ImgOpt = require('./lib/imgopt');
 
 module.exports = function (grunt) {
   grunt.registerMultiTask('imgopt', 'Optimize PNG, JPEG, GIF images.', function() {
@@ -14,7 +17,13 @@ module.exports = function (grunt) {
     var totalSavedSize = 0;
     
     async.forEach(this.files, function (file, next) {
-      imgopt(file.src[0], file.dest, options, function (error, data) {
+      var imgopt = new ImgOpt({
+        src: file.src[0],
+        dest: file.dest,
+        options: options
+      });
+
+      imgopt.optimize(function (error, data) {
         if (error) {
           grunt.warn(error);
         }
@@ -25,7 +34,7 @@ module.exports = function (grunt) {
         if (data.diffSizeRaw < 10) {
           message = 'already optimized';
         } else {
-          message = 'saved ' + data.diff;
+          message = 'saved ' + data.diffSizeRaw;
         }
 
         grunt.log.writeln(chalk.green('✔ ') + file.src[0] + chalk.gray(' (' + message + ')'));
