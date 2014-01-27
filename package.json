@@ -18,7 +18,13 @@
     "gifsicle": "~0.1.4",
     "jpegtran-bin": "~0.2.3",
     "optipng-bin": "~0.3.1",
-    "async": "~0.2.10"
+    "async": "~0.2.10",
+    "chalk": "~0.4.0",
+    "filesize": "~2.0.0",
+    "stream-combiner": "0.0.4",
+    "duplexer": "~0.1.1",
+    "through2": "~0.4.1",
+    "concat-stream": "~1.4.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"

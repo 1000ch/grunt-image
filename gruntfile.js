@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   grunt.initConfig({
     jsvalidate: {
       options: {
@@ -18,9 +18,31 @@ module.exports = function(grunt) {
         globalstrict: true
       },
       all: ['tasks/**/*.js']
+    },
+    imgopt: {
+      static: {
+        options: {
+          optimizationLevel: 3
+        },
+        files: { 
+          'dist/img.png': 'src/img.png',
+          'dist/img.jpg': 'src/img.jpg',
+          'dist/img.gif': 'src/img.gif'
+        }
+      },
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'src/', 
+          src: ['**/*.{png,jpg,gif}'],
+          dest: 'dist/'
+        }]
+      }
     }
   });
   
   grunt.loadNpmTasks('grunt-jsvalidate');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  
+  grunt.loadTasks('tasks');
 };
