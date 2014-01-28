@@ -10,8 +10,8 @@ var grunt = require('grunt');
 
 function ImgOpt(options) {
   this.options = options || {};
-  this.src = options.src || '';
-  this.dest = options.dest || '';
+  this.src = options.src;
+  this.dest = options.dest || this.src;
   this.extension = path.extname(this.src);
   this.optimizers = this.getOptimizers(this.extension);
 }
@@ -27,11 +27,23 @@ ImgOpt.prototype.optipng = function (optimizationLevel) {
   };
 };
 
+ImgOpt.prototype.pngquant = function (dest, qualityRange) {
+  qualityRange = qualityRange || '0-100'
+  var args = ['--ext=' + dest, '--quality=' + qualityRange, '--'];
+  var pngquant = require('pngquant-bin').path;
+
+  return {
+    path: pngquant,
+    args: args
+  };
+};
+
 ImgOpt.prototype.getOptimizers = function (extension) {
   var optimizers = [];
   extension = extension.toLowerCase();
   switch (extension) {
     case '.png':
+      optimizers.push(this.pngquant(this.dest, this.qualityRange));
       optimizers.push(this.optipng(this.optimizationLevel));
       break;
     case '.jpg':
@@ -47,11 +59,11 @@ ImgOpt.prototype.optimize = function (callback) {
     var spawn = grunt.util.spawn({
       cmd: optimizer.path,
       args: optimizer.args
-    }, function () {});
+    }, function (error, result, code) {});
     
     spawn.stdout.pipe(process.stdout);
     spawn.stderr.pipe(process.stderr);
-    spawn.on('exit', callback)
+    spawn.on('exit', callback);
   });
 };
 

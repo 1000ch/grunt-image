@@ -26,9 +26,7 @@ module.exports = function (grunt) {
         if (error) {
           grunt.warn(error);
         }
-        
-        var message = '';
-        grunt.log.writeln(chalk.green('✔ ') + file.src[0] + chalk.gray(' (' + message + ')'));
+        grunt.log.writeln(chalk.green('✔ ') + file.src[0]);
         process.nextTick(next);
       });
     }, function (error) {
