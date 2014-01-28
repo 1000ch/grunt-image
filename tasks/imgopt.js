@@ -14,8 +14,7 @@ module.exports = function (grunt) {
       progressive: true,
       interlace: true
     });
-    var totalSavedSize = 0;
-    
+
     async.forEach(this.files, function (file, next) {
       var imgopt = new ImgOpt({
         src: file.src[0],
@@ -29,14 +28,6 @@ module.exports = function (grunt) {
         }
         
         var message = '';
-        totalSavedSize += data.diff;
-
-        if (data.diffSizeRaw < 10) {
-          message = 'already optimized';
-        } else {
-          message = 'saved ' + data.diffSizeRaw;
-        }
-
         grunt.log.writeln(chalk.green('✔ ') + file.src[0] + chalk.gray(' (' + message + ')'));
         process.nextTick(next);
       });

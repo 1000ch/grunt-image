@@ -6,20 +6,25 @@ var through = require('through2');
 var pipeline = require('stream-combiner');
 var concat = require('concat-stream');
 var filesize = require('filesize');
+var grunt = require('grunt');
 
 function ImgOpt(options) {
   this.options = options || {};
   this.src = options.src || '';
   this.dest = options.dest || '';
-  this.extension = path.extname(options.extension);
+  this.extension = path.extname(this.src);
   this.optimizers = this.getOptimizers(this.extension);
 }
 
-ImgOpt.prototype.optipng = function () {
-  var args = ['-v'];
+ImgOpt.prototype.optipng = function (optimizationLevel) {
+  optimizationLevel = optimizationLevel || 7;
+  var args = ['-v', '-o' + optimizationLevel];
   var optipng = require('optipng-bin').path;
 
-  return spawn(optipng, args);
+  return {
+    path: optipng, 
+    args: args
+  };
 };
 
 ImgOpt.prototype.getOptimizers = function (extension) {
@@ -27,7 +32,7 @@ ImgOpt.prototype.getOptimizers = function (extension) {
   extension = extension.toLowerCase();
   switch (extension) {
     case '.png':
-      optimizers.push(this.optipng());
+      optimizers.push(this.optipng(this.optimizationLevel));
       break;
     case '.jpg':
       break;
@@ -37,35 +42,16 @@ ImgOpt.prototype.getOptimizers = function (extension) {
   return optimizers;
 };
 
-ImgOpt.prototype.optimize = function () {
+ImgOpt.prototype.optimize = function (callback) {
   this.optimizers.forEach(function (optimizer) {
-    var childProcess = optimizer();
-    var size = [];
-    var sizeDest;
-    var stream = duplex(childProcess.stdin, childProcess.stdout);
-    var src = through(function (data, encode, callback) {
-      size.push(data);
-      this.push(data);
-      callback();
-    });
+    var spawn = grunt.util.spawn({
+      cmd: optimizer.path,
+      args: optimizer.args
+    }, function () {});
     
-    childProcess.stdout.pipe(concat(function (data) {
-      sizeDest = new Buffer(data).length;
-    }));
-    
-    childProcess.stdout.on('close', function () {
-      size = Buffer.concat(size).length;
-      
-      var saved = size - sizeDest;
-      stream.emit('close', {
-        originalSize: filesize(size),
-        originalSizeRaw: size,
-        diffSize: filesize(sized),
-        diffSizeRaw: saved
-      });
-    });
-    
-    return pipeline(src, stream);
+    spawn.stdout.pipe(process.stdout);
+    spawn.stderr.pipe(process.stderr);
+    spawn.on('exit', callback)
   });
 };
 
