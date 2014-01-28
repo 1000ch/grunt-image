@@ -25,7 +25,7 @@
     "duplexer": "~0.1.1",
     "through2": "~0.4.1",
     "concat-stream": "~1.4.1",
-    "pngquant-bin": "~0.1.5"
+    "node-pngquant-bin": "~0.1.0"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"

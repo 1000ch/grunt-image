@@ -18,7 +18,10 @@ function ImgOpt(options) {
 
 ImgOpt.prototype.optipng = function (optimizationLevel) {
   optimizationLevel = optimizationLevel || 7;
-  var args = ['-v', '-o' + optimizationLevel];
+  var args = [];
+  args.push('-v');
+  args.push('-o' + optimizationLevel);
+  args.push(this.dest);
   var optipng = require('optipng-bin').path;
 
   return {
@@ -27,10 +30,14 @@ ImgOpt.prototype.optipng = function (optimizationLevel) {
   };
 };
 
-ImgOpt.prototype.pngquant = function (dest, qualityRange) {
+ImgOpt.prototype.pngquant = function (qualityRange) {
   qualityRange = qualityRange || '0-100'
-  var args = ['--ext=' + dest, '--quality=' + qualityRange, '--'];
-  var pngquant = require('pngquant-bin').path;
+  var args = [];
+  args.push('--ext=' + this.dest);
+  args.push('--quality=' + qualityRange);
+  args.push('--');
+  args.push(this.src);
+  var pngquant = require('node-pngquant-bin').path;
 
   return {
     path: pngquant,
@@ -43,7 +50,7 @@ ImgOpt.prototype.getOptimizers = function (extension) {
   extension = extension.toLowerCase();
   switch (extension) {
     case '.png':
-      optimizers.push(this.pngquant(this.dest, this.qualityRange));
+      optimizers.push(this.pngquant(this.qualityRange));
       optimizers.push(this.optipng(this.optimizationLevel));
       break;
     case '.jpg':

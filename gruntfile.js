@@ -22,6 +22,7 @@ module.exports = function (grunt) {
     imgopt: {
       static: {
         options: {
+          qualityRange: '80-100',
           optimizationLevel: 3
         },
         files: { 
