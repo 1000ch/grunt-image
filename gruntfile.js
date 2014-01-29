@@ -19,7 +19,7 @@ module.exports = function (grunt) {
       },
       all: ['tasks/**/*.js']
     },
-    imgopt: {
+    image: {
       static: {
         options: {
           qualityRange: '80-100',

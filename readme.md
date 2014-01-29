@@ -1,4 +1,4 @@
-# grunt-imgopt
+# grunt-image
 
 ## Usage
 
@@ -7,7 +7,7 @@ This is `gruntfile.js` sample similar to [`grunt-contrib-imagemin`](https://gith
 ```js
 module.exports = function (grunt) {
   grunt.initConfig({
-    imgopt: {
+    image: {
       static: {
         options: {
           qualityRange: '80-100',
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     }
   });
     
-  grunt.loadNpmTasks('grunt-imgopt');
+  grunt.loadNpmTasks('grunt-image');
 };
 ```
 
