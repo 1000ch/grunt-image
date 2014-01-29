@@ -33,10 +33,8 @@ ImgOpt.prototype.optipng = function (optimizationLevel) {
 ImgOpt.prototype.pngquant = function (qualityRange) {
   qualityRange = qualityRange || '0-100';
   var args = [];
-  args.push('--ext=' + this.dest);
   args.push('--quality=' + qualityRange);
-  args.push('--');
-  args.push(this.src);
+  args.push(this.dest);
 
   return {
     name: 'pngquant',

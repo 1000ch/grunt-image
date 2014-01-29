@@ -24,7 +24,7 @@ module.exports = function (grunt) {
         options: {
           qualityRange: '80-100',
           optimizationLevel: 3
-        },
+        },  
         files: { 
           'dist/img.png': 'src/img.png',
           'dist/img.jpg': 'src/img.jpg',

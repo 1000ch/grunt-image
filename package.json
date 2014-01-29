@@ -21,8 +21,10 @@
     "async": "~0.2.10",
     "chalk": "~0.4.0",
     "filesize": "~2.0.0",
-    "pngquant-bin": "~0.1.5",
-    "node-advpng": "0.0.2"
+    "pngquant-bin": "git://github.com/1000ch/node-pngquant-bin.git",
+    "node-advpng": "0.0.2",
+    "stream-combiner": "0.0.4",
+    "through2": "~0.4.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"

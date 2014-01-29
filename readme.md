@@ -38,6 +38,7 @@ module.exports = function (grunt) {
 
 - pngquant
     - ✔ https://github.com/sindresorhus/node-pngquant-bin
+        - https://github.com/pornel/pngquant
     - https://github.com/zauni/node-pngquant-bin
     - https://github.com/papandreou/node-pngquant
 - gifsicle
@@ -57,3 +58,7 @@ module.exports = function (grunt) {
 
 - ✘
 - ✔
+
+## License
+
+MIT.
