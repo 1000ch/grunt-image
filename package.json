@@ -1,6 +1,6 @@
 {
   "name": "grunt-imgopt",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
@@ -11,9 +11,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/1000ch/node-image-optimize/issues"
+    "url": "https://github.com/1000ch/grunt-imgopt/issues"
   },
-  "homepage": "https://github.com/1000ch/node-image-optimize",
+  "homepage": "https://github.com/1000ch/grunt-imgopt",
   "dependencies": {
     "gifsicle": "~0.1.4",
     "jpegtran-bin": "~0.2.3",
@@ -21,11 +21,8 @@
     "async": "~0.2.10",
     "chalk": "~0.4.0",
     "filesize": "~2.0.0",
-    "stream-combiner": "0.0.4",
-    "duplexer": "~0.1.1",
-    "through2": "~0.4.1",
-    "concat-stream": "~1.4.1",
-    "node-pngquant-bin": "~0.1.0"
+    "pngquant-bin": "~0.1.5",
+    "node-advpng": "0.0.2"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
