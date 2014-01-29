@@ -8,7 +8,7 @@ var execFile = require('child_process').execFile;
 var filesize = require('filesize');
 var grunt = require('grunt');
 
-function ImgOpt(options) {
+function Optimizer(options) {
   this.options = options || {};
   this.src = options.src;
   this.dest = options.dest || this.src;
@@ -16,7 +16,7 @@ function ImgOpt(options) {
   this.optimizers = this.getOptimizers(this.extension);
 }
 
-ImgOpt.prototype.optipng = function (optimizationLevel) {
+Optimizer.prototype.optipng = function (optimizationLevel) {
   optimizationLevel = optimizationLevel || 7;
   var args = [];
   args.push('-v');
@@ -30,10 +30,11 @@ ImgOpt.prototype.optipng = function (optimizationLevel) {
   };
 };
 
-ImgOpt.prototype.pngquant = function (qualityRange) {
+Optimizer.prototype.pngquant = function (qualityRange) {
   qualityRange = qualityRange || '0-100';
   var args = [];
-  args.push('--quality=' + qualityRange);
+  //args.push('--ext=' + this.dest);
+  //args.push('--quality=' + qualityRange);
   args.push(this.dest);
 
   return {
@@ -43,7 +44,7 @@ ImgOpt.prototype.pngquant = function (qualityRange) {
   };
 };
 
-ImgOpt.prototype.advpng = function () {
+Optimizer.prototype.advpng = function () {
   var args = [];
   args.push(this.dest);
 
@@ -54,7 +55,7 @@ ImgOpt.prototype.advpng = function () {
   };
 };
 
-ImgOpt.prototype.gifsicle = function () {
+Optimizer.prototype.gifsicle = function () {
   var args = [];
   args.push('-o');
   args.push(this.dest);
@@ -67,7 +68,7 @@ ImgOpt.prototype.gifsicle = function () {
   };
 };
 
-ImgOpt.prototype.jpegtran = function () {
+Optimizer.prototype.jpegtran = function () {
   var args = [];
   args.push('-outfile');
   args.push(this.dest);
@@ -80,7 +81,7 @@ ImgOpt.prototype.jpegtran = function () {
   };
 };
 
-ImgOpt.prototype.getOptimizers = function (extension) {
+Optimizer.prototype.getOptimizers = function (extension) {
   var optimizers = [];
   extension = extension.toLowerCase();
   switch (extension) {
@@ -99,7 +100,7 @@ ImgOpt.prototype.getOptimizers = function (extension) {
   return optimizers;
 };
 
-ImgOpt.prototype.copyFile = function (src, dest) {
+Optimizer.prototype.copyFile = function (src, dest) {
 
   var readStream = fs.createReadStream(src);
   var writeStream;
@@ -118,7 +119,7 @@ ImgOpt.prototype.copyFile = function (src, dest) {
   readStream.pipe(writeStream);
 };
 
-ImgOpt.prototype.optimize = function (callback) {
+Optimizer.prototype.optimize = function (callback) {
 
   this.copyFile(this.src, this.dest);
   this.optimizers.forEach(function (optimizer) {
@@ -126,4 +127,4 @@ ImgOpt.prototype.optimize = function (callback) {
   });
 };
 
-module.exports = ImgOpt;
+module.exports = Optimizer;
