@@ -20,7 +20,8 @@ function Optimizer(options) {
 Optimizer.prototype.optipng = function (optimizationLevel) {
   optimizationLevel = optimizationLevel || 7;
   var args = [];
-  //args.push('-v');
+  args.push('-i 1');
+  args.push('-strip all');
   args.push('-fix');
   args.push('-o' + optimizationLevel);
   args.push('-force');
@@ -39,6 +40,7 @@ Optimizer.prototype.pngquant = function (qualityRange) {
   qualityRange = qualityRange || '0-100';
   var args = [];
   args.push('--ext=.png');
+  args.push('--speed=1');
   args.push('--quality=' + qualityRange);
   args.push('--force');
   args.push(this.dest);
@@ -52,7 +54,7 @@ Optimizer.prototype.pngquant = function (qualityRange) {
 
 Optimizer.prototype.advpng = function () {
   var args = [];
-  args.push('--shrink-normal');
+  args.push('--shrink-insane');
   args.push(this.dest);
 
   return {
@@ -150,6 +152,10 @@ Optimizer.prototype.optimize = function (callback) {
 
   var src = this.src;
   var dest = this.dest;
+
+  //if (this.extension.toLowerCase() === '.png') {
+  //    this.copyFile(this.src, this.dest);
+  //}
 
   var fns = this.optimizers.map(function (optimizer) {
     return function (callback) {
