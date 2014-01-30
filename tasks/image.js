@@ -22,11 +22,11 @@ module.exports = function (grunt) {
         options: options
       });
 
-      optimizer.optimize(function (error) {
+      optimizer.optimize(function (error, data) {
         if (error) {
           grunt.warn(error);
         }
-        grunt.log.writeln(chalk.green('✔ ') + file.src[0]);
+        grunt.log.writeln(chalk.green('✔ ') + file.src[0] + chalk.gray(' (' + data.diff + ' reduced)'));
         process.nextTick(next);
       });
     }, function (error) {

@@ -6,6 +6,7 @@ var path = require('path');
 var spawn = require('child_process').spawn;
 var execFile = require('child_process').execFile;
 var async = require('async');
+var filesize = require('filesize');
 var grunt = require('grunt');
 
 function Optimizer(options) {
@@ -147,6 +148,9 @@ Optimizer.prototype.copyFile = function (src, dest) {
 
 Optimizer.prototype.optimize = function (callback) {
 
+  var src = this.src;
+  var dest = this.dest;
+
   var fns = this.optimizers.map(function (optimizer) {
     return function (callback) {
       execFile(optimizer.path, optimizer.args, function () {
@@ -156,7 +160,13 @@ Optimizer.prototype.optimize = function (callback) {
   });
   
   async.series(fns, function (error, result) {
-    callback(error);
+    var originalSize = fs.statSync(src).size;
+    var optimizedSize = fs.statSync(dest).size;
+    callback(error, {
+      original: filesize(originalSize),
+      optimized: filesize(optimizedSize),
+      diff: filesize(originalSize - optimizedSize)
+    });
   });
   
   //this.optimizers.forEach(function (optimizer) {
