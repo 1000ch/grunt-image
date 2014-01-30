@@ -1,5 +1,11 @@
 # grunt-image
 
+## About
+
+Optimize PNG, JPEG, GIF images with command line.
+
+**This is unstable now** .
+
 ## Usage
 
 This is `gruntfile.js` sample similar to [`grunt-contrib-imagemin`](https://github.com/gruntjs/grunt-contrib-imagemin) one. 
@@ -34,26 +40,41 @@ module.exports = function (grunt) {
 };
 ```
 
-## Reference
+## png
 
-- pngquant
-    - ✔ https://github.com/sindresorhus/node-pngquant-bin
-        - https://github.com/pornel/pngquant
-    - https://github.com/zauni/node-pngquant-bin
-    - https://github.com/papandreou/node-pngquant
-- gifsicle
-    - ✔ https://github.com/yeoman/node-gifsicle
-- jpegtran
-    - ✔ https://github.com/yeoman/node-jpegtran-bin
-    - https://github.com/papandreou/node-jpegtran
-- optipng
-    - ✔ https://github.com/yeoman/node-optipng-bin
-    - https://github.com/papandreou/node-optipng
-- advpng
-    - ✔ https://github.com/colorhook/node-advpng
-- pngcrush
-    - https://github.com/papandreou/node-pngcrush
-    
+### pngquant
+
+- ✔ https://github.com/sindresorhus/node-pngquant-bin
+- https://github.com/zauni/node-pngquant-bin
+- https://github.com/papandreou/node-pngquant
+
+### optipng
+
+- ✔ https://github.com/yeoman/node-optipng-bin
+- https://github.com/papandreou/node-optipng
+
+### advpng
+
+- ✔ https://github.com/colorhook/node-advpng
+
+### pngcrush
+
+- ✔ https://github.com/1000ch/node-pngcrush-bin
+- https://github.com/papandreou/node-pngcrush
+ 
+## jpg
+
+### jpegtran
+
+- ✔ https://github.com/yeoman/node-jpegtran-bin
+- https://github.com/papandreou/node-jpegtran
+
+## gif
+
+### gifsicle
+
+- ✔ https://github.com/yeoman/node-gifsicle
+
 ## Symbols
 
 - ✘
