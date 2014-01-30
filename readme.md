@@ -49,6 +49,7 @@ module.exports = function (grunt) {
 - https://github.com/papandreou/node-pngquant
 
 ```sh
+--speed N         speed/quality trade-off. 1=slow, 3=default, 11=fast & rough
 --quality      min-max don't save below min, use less colors below max (0-100)
 ```
 
@@ -62,6 +63,8 @@ Execute `./node_modules/pngquant-bin/vendor/pngquant -h` to see more details.
 ```sh
 -fix           enable error recovery
 -oN
+-i <type>   PNG interlace type (0-1)
+-strip <objects>  strip metadata objects (e.g. "all")
 ```
 
 Execute `./node_modules/optipng-bin/vendor/optipng -h` to see more details.
