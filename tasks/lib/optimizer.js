@@ -5,7 +5,7 @@ var path = require('path');
 
 var spawn = require('child_process').spawn;
 var execFile = require('child_process').execFile;
-var filesize = require('filesize');
+var async = require('async');
 var grunt = require('grunt');
 
 function Optimizer(options) {
@@ -19,9 +19,13 @@ function Optimizer(options) {
 Optimizer.prototype.optipng = function (optimizationLevel) {
   optimizationLevel = optimizationLevel || 7;
   var args = [];
-  args.push('-v');
+  //args.push('-v');
+  args.push('-fix');
   args.push('-o' + optimizationLevel);
+  args.push('-force');
+  args.push('-out');
   args.push(this.dest);
+  args.push(this.src);
 
   return {
     name: 'optipng',
@@ -33,8 +37,9 @@ Optimizer.prototype.optipng = function (optimizationLevel) {
 Optimizer.prototype.pngquant = function (qualityRange) {
   qualityRange = qualityRange || '0-100';
   var args = [];
-  //args.push('--ext=' + this.dest);
-  //args.push('--quality=' + qualityRange);
+  args.push('--ext=.png');
+  args.push('--quality=' + qualityRange);
+  args.push('--force');
   args.push(this.dest);
 
   return {
@@ -46,6 +51,7 @@ Optimizer.prototype.pngquant = function (qualityRange) {
 
 Optimizer.prototype.advpng = function () {
   var args = [];
+  args.push('--shrink-normal');
   args.push(this.dest);
 
   return {
@@ -57,6 +63,9 @@ Optimizer.prototype.advpng = function () {
 
 Optimizer.prototype.pngcrush = function () {
   var args = [];
+  args.push('-rem alla');
+  args.push('-brute');
+  args.push('-reduce');
   args.push(this.dest);
   
   return {
@@ -68,7 +77,10 @@ Optimizer.prototype.pngcrush = function () {
 
 Optimizer.prototype.gifsicle = function () {
   var args = [];
-  args.push('-o');
+  args.push('--careful');
+  args.push('--interlace');
+  args.push('--optimize');
+  args.push('--output');
   args.push(this.dest);
   args.push(this.src);
 
@@ -81,6 +93,8 @@ Optimizer.prototype.gifsicle = function () {
 
 Optimizer.prototype.jpegtran = function () {
   var args = [];
+  args.push('-optimize');
+  args.push('-progressive');
   args.push('-outfile');
   args.push(this.dest);
   args.push(this.src);
@@ -97,8 +111,8 @@ Optimizer.prototype.getOptimizers = function (extension) {
   extension = extension.toLowerCase();
   switch (extension) {
     case '.png':
-      optimizers.push(this.pngquant(this.qualityRange));
       optimizers.push(this.optipng(this.optimizationLevel));
+      optimizers.push(this.pngquant(this.qualityRange));
       optimizers.push(this.pngcrush());
       optimizers.push(this.advpng());
       break;
@@ -133,10 +147,21 @@ Optimizer.prototype.copyFile = function (src, dest) {
 
 Optimizer.prototype.optimize = function (callback) {
 
-  this.copyFile(this.src, this.dest);
-  this.optimizers.forEach(function (optimizer) {
-    execFile(optimizer.path, optimizer.args, callback);
+  var fns = this.optimizers.map(function (optimizer) {
+    return function (callback) {
+      execFile(optimizer.path, optimizer.args, function () {
+        callback(null, optimizer.name);
+      });
+    };
   });
+  
+  async.series(fns, function (error, result) {
+    callback(error);
+  });
+  
+  //this.optimizers.forEach(function (optimizer) {
+  //  execFile(optimizer.path, optimizer.args, callback);
+  //});
 };
 
 module.exports = Optimizer;

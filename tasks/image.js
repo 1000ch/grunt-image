@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         options: options
       });
 
-      optimizer.optimize(function (error, data) {
+      optimizer.optimize(function (error) {
         if (error) {
           grunt.warn(error);
         }
