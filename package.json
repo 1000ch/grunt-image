@@ -24,7 +24,8 @@
     "pngquant-bin": "git://github.com/1000ch/node-pngquant-bin.git",
     "node-advpng": "0.0.2",
     "stream-combiner": "0.0.4",
-    "through2": "~0.4.1"
+    "through2": "~0.4.1",
+    "pngcrush-bin": "0.0.4"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"

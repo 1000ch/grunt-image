@@ -55,6 +55,17 @@ Optimizer.prototype.advpng = function () {
   };
 };
 
+Optimizer.prototype.pngcrush = function () {
+  var args = [];
+  args.push(this.dest);
+  
+  return {
+    name: 'pngcrush',
+    path: require('pngcrush-bin').path,
+    args: args
+  };
+};
+
 Optimizer.prototype.gifsicle = function () {
   var args = [];
   args.push('-o');
@@ -88,6 +99,7 @@ Optimizer.prototype.getOptimizers = function (extension) {
     case '.png':
       optimizers.push(this.pngquant(this.qualityRange));
       optimizers.push(this.optipng(this.optimizationLevel));
+      optimizers.push(this.pngcrush());
       optimizers.push(this.advpng());
       break;
     case '.jpg':
