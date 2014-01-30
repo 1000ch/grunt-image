@@ -119,11 +119,6 @@ Execute `./node_modules/jpegtran-bin/vendor/jpegtran -h` to see more details.
 
 Execute `./node_modules/gifsicle/vendor/gifsicle -h` to see more details.
 
-## Symbols
-
-- ✘
-- ✔
-
 ## License
 
 MIT.
