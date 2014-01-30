@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "async": "~0.2.10",
     "chalk": "~0.4.0",
     "filesize": "~2.0.0",
-    "pngquant-bin": "git://github.com/1000ch/node-pngquant-bin.git",
+    "pngquant-bin": "~0.1.5",
     "node-advpng": "0.0.2",
     "stream-combiner": "0.0.4",
     "through2": "~0.4.1",
