@@ -19,16 +19,22 @@ module.exports = function (grunt) {
       },
       all: ['tasks/**/*.js']
     },
+    clean: {
+      test: ['tmp']
+    },
     image: {
       static: {
         options: {
           qualityRange: '80-100',
           optimizationLevel: 3
         },  
-        files: { 
-          'dist/img.png': 'src/img.png',
-          'dist/img.jpg': 'src/img.jpg',
-          'dist/img.gif': 'src/img.gif'
+        files: {
+          'tmp/test.png': 'test/fixtures/test.png',
+          'tmp/test.jpg': 'test/fixtures/test.jpg',
+          'tmp/test.gif': 'test/fixtures/test.gif',
+          'tmp/test-uppercase.PNG': 'test/fixtures/test-uppercase.PNG',
+          'tmp/test-uppercase.JPG': 'test/fixtures/test-uppercase.JPG',
+          'tmp/test-uppercase.GIF': 'test/fixtures/test-uppercase.GIF'
         }
       },
       dynamic: {
@@ -44,6 +50,17 @@ module.exports = function (grunt) {
   
   grunt.loadNpmTasks('grunt-jsvalidate');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
   
   grunt.loadTasks('tasks');
+
+  grunt.registerTask('mkdir', grunt.file.mkdir);
+  grunt.registerTask('test', [
+    'clean',
+    'mkdir:tmp',
+    'image',
+    'nodeunit',
+    'clean'
+  ]);
 };

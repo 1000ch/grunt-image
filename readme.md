@@ -1,4 +1,4 @@
-# grunt-image
+# grunt-image [![Build Status](https://travis-ci.org/1000ch/grunt-image.png?branch=master)](https://travis-ci.org/1000ch/grunt-image)
 
 ## About
 
