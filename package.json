@@ -31,8 +31,8 @@
     "node-advpng": "0.0.2",
     "stream-combiner": "0.0.4",
     "through2": "~0.4.1",
-    "pngcrush-bin": "0.0.4",
-    "zopflipng-bin": "0.0.1"
+    "pngcrush-bin": "0.1.1",
+    "zopflipng-bin": "0.1.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
