@@ -44,9 +44,9 @@ Optimizer.prototype.optipng = function (optimizationLevel) {
   args.push('-fix');
   args.push('-o' + optimizationLevel);
   args.push('-force');
-  //args.push('-out');
+  args.push('-out');
   args.push(this.dest);
-  //args.push(this.src);
+  args.push(this.src);
 
   return {
     name: 'optipng',
@@ -106,7 +106,7 @@ Optimizer.prototype.zopflipng = function () {
   args.push('--filters=01234mepb');
   args.push('--lossy_8bit');
   args.push('--lossy_transparent');
-  args.push(this.src);
+  //args.push(this.src);
   args.push(this.dest);
   
   return {
@@ -152,11 +152,11 @@ Optimizer.prototype.getOptimizers = function (extension) {
   extension = extension.toLowerCase();
   switch (extension) {
     case '.png':
-      optimizers.push(this.zopflipng());
+      optimizers.push(this.optipng(this.optimizationLevel));
       optimizers.push(this.pngquant(this.qualityRange));
+      optimizers.push(this.zopflipng());
       optimizers.push(this.pngcrush());
       optimizers.push(this.advpng());
-      optimizers.push(this.optipng(this.optimizationLevel));
       break;
     case '.jpg':
       optimizers.push(this.jpegtran());
