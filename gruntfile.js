@@ -36,14 +36,6 @@ module.exports = function (grunt) {
           'tmp/test-uppercase.JPG': 'test/fixtures/test-uppercase.JPG',
           'tmp/test-uppercase.GIF': 'test/fixtures/test-uppercase.GIF'
         }
-      },
-      dynamic: {
-        files: [{
-          expand: true,
-          cwd: 'src/', 
-          src: ['**/*.{png,jpg,gif}'],
-          dest: 'dist/'
-        }]
       }
     }
   });

@@ -4,8 +4,6 @@
 
 Optimize PNG, JPEG, GIF images with command line.
 
-**This is unstable now** .
-
 ## Usage
 
 This is `gruntfile.js` sample similar to [`grunt-contrib-imagemin`](https://github.com/gruntjs/grunt-contrib-imagemin) one. 
