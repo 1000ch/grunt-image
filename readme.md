@@ -84,6 +84,18 @@ Execute `./node_modules/node-advpng/bin/advpng -h` to see more details.
 - ✔ https://github.com/1000ch/node-zopflipng-bin
 
 ```sh
+-m: compress more: use more iterations (depending on file size) and use block split strategy 3
+--iterations=[number]: number of iterations, more iterations makes it slower but provides slightly better compression. Default: 15 for small files, 5 for large files.
+--lossy_transparent: remove colors behind alpha channel 0. No visual difference, removes hidden information.
+--lossy_8bit: convert 16-bit per channel image to 8-bit per channel.
+--filters=[types]: filter strategies to try:
+ 0-4: give all scanlines PNG filter type 0-4
+ m: minimum sum
+ e: entropy
+ p: predefined (keep from input, this likely overlaps another strategy)
+ b: brute force (experimental)
+ By default, if this argument is not given, one that is most likely the best for this image is chosen by trying faster compression with each type.
+ If this argument is used, all given filter types are tried with slow compression and the best result retained. A good set of filters to try is --filters=0me.
 ```
 
 Execute `./node_modules/node-advpng/bin/advpng -h` to see more details.
