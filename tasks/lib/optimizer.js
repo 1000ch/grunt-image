@@ -17,6 +17,25 @@ function Optimizer(options) {
   this.optimizers = this.getOptimizers(this.extension);
 }
 
+Optimizer.copyFile = function (src, dest) {
+
+  var readStream = fs.createReadStream(src);
+  var writeStream;
+
+  if (fs.existsSync(dest) && fs.statSync(dest).isDirectory()) {
+    // dest is directory
+    var basename = path.basename(src);
+    writeStream = fs.createWriteStream(path.join(dest, basename));
+  } else if (fs.existsSync(dest) && fs.statSync(dest).isFile()) {
+    // dest is file
+    writeStream = fs.createWriteStream(dest);
+  } else {
+    writeStream = fs.createWriteStream(dest);
+  }
+
+  readStream.pipe(writeStream);
+};
+
 Optimizer.prototype.optipng = function (optimizationLevel) {
   optimizationLevel = optimizationLevel || 7;
   var args = [];
@@ -25,9 +44,9 @@ Optimizer.prototype.optipng = function (optimizationLevel) {
   args.push('-fix');
   args.push('-o' + optimizationLevel);
   args.push('-force');
-  args.push('-out');
+  //args.push('-out');
   args.push(this.dest);
-  args.push(this.src);
+  //args.push(this.src);
 
   return {
     name: 'optipng',
@@ -43,6 +62,7 @@ Optimizer.prototype.pngquant = function (qualityRange) {
   args.push('--speed=1');
   args.push('--quality=' + qualityRange);
   args.push('--force');
+  args.push('256');
   args.push(this.dest);
 
   return {
@@ -74,6 +94,24 @@ Optimizer.prototype.pngcrush = function () {
   return {
     name: 'pngcrush',
     path: require('pngcrush-bin').path,
+    args: args
+  };
+};
+
+Optimizer.prototype.zopflipng = function () {
+  var args = [];
+  args.push('-m');
+  args.push('--iterations=500');
+  args.push('--splitting=3');
+  args.push('--filters=01234mepb');
+  args.push('--lossy_8bit');
+  args.push('--lossy_transparent');
+  args.push(this.src);
+  args.push(this.dest);
+  
+  return {
+    name: 'zopflipng',
+    path: require('zopflipng-bin').path,
     args: args
   };
 };
@@ -114,10 +152,11 @@ Optimizer.prototype.getOptimizers = function (extension) {
   extension = extension.toLowerCase();
   switch (extension) {
     case '.png':
-      optimizers.push(this.optipng(this.optimizationLevel));
+      optimizers.push(this.zopflipng());
       optimizers.push(this.pngquant(this.qualityRange));
       optimizers.push(this.pngcrush());
       optimizers.push(this.advpng());
+      optimizers.push(this.optipng(this.optimizationLevel));
       break;
     case '.jpg':
       optimizers.push(this.jpegtran());
@@ -129,32 +168,13 @@ Optimizer.prototype.getOptimizers = function (extension) {
   return optimizers;
 };
 
-Optimizer.prototype.copyFile = function (src, dest) {
-
-  var readStream = fs.createReadStream(src);
-  var writeStream;
-  
-  if (fs.existsSync(dest) && fs.statSync(dest).isDirectory()) {
-    // dest is directory
-    var basename = path.basename(src);
-    writeStream = fs.createWriteStream(path.join(dest, basename));
-  } else if (fs.existsSync(dest) && fs.statSync(dest).isFile()) {
-    // dest is file
-    writeStream = fs.createWriteStream(dest);
-  } else {
-    writeStream = fs.createWriteStream(dest);
-  }
-  
-  readStream.pipe(writeStream);
-};
-
 Optimizer.prototype.optimize = function (callback) {
 
   var src = this.src;
   var dest = this.dest;
 
   //if (this.extension.toLowerCase() === '.png') {
-  //    this.copyFile(this.src, this.dest);
+  //    Optimizer.copyFile(this.src, this.dest);
   //}
 
   var fns = this.optimizers.map(function (optimizer) {

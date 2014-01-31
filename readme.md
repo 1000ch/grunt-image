@@ -79,6 +79,15 @@ Execute `./node_modules/optipng-bin/vendor/optipng -h` to see more details.
 
 Execute `./node_modules/node-advpng/bin/advpng -h` to see more details.
 
+### zopflipng
+
+- ✔ https://github.com/1000ch/node-zopflipng-bin
+
+```sh
+```
+
+Execute `./node_modules/node-advpng/bin/advpng -h` to see more details.
+
 ### pngcrush
 
 - ✔ https://github.com/1000ch/node-pngcrush-bin
