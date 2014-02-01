@@ -147,6 +147,18 @@ Optimizer.prototype.jpegtran = function () {
   };
 };
 
+Optimizer.prototype.jpegRecompress = function () {
+  var args = [];
+  args.push(this.dest);
+  args.push(this.dest);
+  
+  return {
+    name: 'jpeg-recompress',
+    path: require('jpeg-recompress-bin').path,
+    args: args
+  };
+};
+
 Optimizer.prototype.getOptimizers = function (extension) {
   var optimizers = [];
   extension = extension.toLowerCase();
@@ -160,6 +172,7 @@ Optimizer.prototype.getOptimizers = function (extension) {
       break;
     case '.jpg':
       optimizers.push(this.jpegtran());
+      optimizers.push(this.jpegRecompress());
       break;
     case '.gif':
       optimizers.push(this.gifsicle());

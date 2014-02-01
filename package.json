@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
@@ -32,7 +32,8 @@
     "stream-combiner": "0.0.4",
     "through2": "~0.4.1",
     "pngcrush-bin": "0.1.1",
-    "zopflipng-bin": "0.1.1"
+    "zopflipng-bin": "0.1.1",
+    "jpeg-recompress-bin": "~0.1.0"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
