@@ -149,6 +149,8 @@ Optimizer.prototype.jpegtran = function () {
 
 Optimizer.prototype.jpegRecompress = function () {
   var args = [];
+  args.push('--progressive');
+  args.push('--strip');
   args.push(this.dest);
   args.push(this.dest);
   

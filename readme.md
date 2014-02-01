@@ -125,6 +125,17 @@ Execute `./node_modules/pngcrush-bin/vendor/pngcrush -h` to see more details.
 
 Execute `./node_modules/jpegtran-bin/vendor/jpegtran -h` to see more details.
 
+### jpeg-recompress
+
+- ✔ https://github.com/1000ch/node-jpeg-recompress-bin
+
+```sh
+-p, --progressive             Set progressive JPEG output
+-s, --strip                   Strip metadata
+```
+
+Execute `./node_modules/jpeg-recompress-bin/vendor/jpeg-recompress -h` to see more details.
+
 ## gif
 
 ### gifsicle
