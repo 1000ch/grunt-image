@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
