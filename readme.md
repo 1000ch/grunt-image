@@ -4,6 +4,8 @@
 
 Optimize PNG, JPEG, GIF images with command line.
 
+[![NPM](https://nodei.co/npm/grunt-image.png)](https://nodei.co/npm/grunt-image/)
+
 ## Usage
 
 This is `gruntfile.js` sample similar to [`grunt-contrib-imagemin`](https://github.com/gruntjs/grunt-contrib-imagemin) one. 
