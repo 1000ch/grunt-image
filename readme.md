@@ -11,6 +11,28 @@ Optimize PNG, JPEG, GIF images with command line.
 
 [![NPM](https://nodei.co/npm/grunt-image.png)](https://nodei.co/npm/grunt-image/)
 
+## Dependency
+
+`jpeg-recompress` requires `libjpeg-turbo`, so you have to install some libraries before getting `grunt-image`.
+
+### Ubuntu
+
+```sh
+$ sudo apt-get install build-essential libjpeg-turbo8 libjpeg-turbo8-dev
+```
+
+### Mac OS X
+
+```sh
+$ brew install libjpeg libjpeg-turbo
+```
+
+## Install
+
+```sh
+$ npm install --save-dev grunt-image
+```
+
 ## Usage
 
 This is `gruntfile.js` sample similar to [`grunt-contrib-imagemin`](https://github.com/gruntjs/grunt-contrib-imagemin) one. 
