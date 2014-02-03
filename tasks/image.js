@@ -16,6 +16,13 @@ module.exports = function (grunt) {
     });
 
     async.forEach(this.files, function (file, next) {
+      var basename = path.basename(file.dest);
+      var dir = file.dest.replace(basename, '');
+      
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+      }
+      
       var optimizer = new Optimizer({
         src: file.src[0],
         dest: file.dest,
