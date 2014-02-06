@@ -17,25 +17,6 @@ function Optimizer(options) {
   this.optimizers = this.getOptimizers(this.extension);
 }
 
-Optimizer.copyFile = function (src, dest) {
-
-  var readStream = fs.createReadStream(src);
-  var writeStream;
-
-  if (fs.existsSync(dest) && fs.statSync(dest).isDirectory()) {
-    // dest is directory
-    var basename = path.basename(src);
-    writeStream = fs.createWriteStream(path.join(dest, basename));
-  } else if (fs.existsSync(dest) && fs.statSync(dest).isFile()) {
-    // dest is file
-    writeStream = fs.createWriteStream(dest);
-  } else {
-    writeStream = fs.createWriteStream(dest);
-  }
-
-  readStream.pipe(writeStream);
-};
-
 Optimizer.prototype.optipng = function (optimizationLevel) {
   optimizationLevel = optimizationLevel || 7;
   var args = [];
@@ -55,12 +36,10 @@ Optimizer.prototype.optipng = function (optimizationLevel) {
   };
 };
 
-Optimizer.prototype.pngquant = function (qualityRange) {
-  qualityRange = qualityRange || '0-100';
+Optimizer.prototype.pngquant = function () {
   var args = [];
   args.push('--ext=.png');
   args.push('--speed=1');
-  args.push('--quality=' + qualityRange);
   args.push('--force');
   args.push('256');
   args.push(this.dest);
@@ -118,8 +97,8 @@ Optimizer.prototype.zopflipng = function () {
 
 Optimizer.prototype.gifsicle = function () {
   var args = [];
-  args.push('--careful');
-  args.push('--interlace');
+  //args.push('--careful');
+  //args.push('--interlace');
   args.push('--optimize');
   args.push('--output');
   args.push(this.dest);
@@ -167,7 +146,7 @@ Optimizer.prototype.getOptimizers = function (extension) {
   switch (extension) {
     case '.png':
       optimizers.push(this.optipng(this.optimizationLevel));
-      optimizers.push(this.pngquant(this.qualityRange));
+      optimizers.push(this.pngquant());
       optimizers.push(this.zopflipng());
       optimizers.push(this.pngcrush());
       optimizers.push(this.advpng());
@@ -188,10 +167,6 @@ Optimizer.prototype.optimize = function (callback) {
   var src = this.src;
   var dest = this.dest;
 
-  //if (this.extension.toLowerCase() === '.png') {
-  //    Optimizer.copyFile(this.src, this.dest);
-  //}
-
   var fns = this.optimizers.map(function (optimizer) {
     return function (callback) {
       execFile(optimizer.path, optimizer.args, function () {
@@ -209,10 +184,6 @@ Optimizer.prototype.optimize = function (callback) {
       diff: filesize(originalSize - optimizedSize)
     });
   });
-  
-  //this.optimizers.forEach(function (optimizer) {
-  //  execFile(optimizer.path, optimizer.args, callback);
-  //});
 };
 
 module.exports = Optimizer;
