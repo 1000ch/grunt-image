@@ -1,8 +1,8 @@
-# grunt-image
+# [grunt-image](https://npmjs.org/package/grunt-image)
 
 ## About
 
-Optimize PNG, JPEG, GIF images with command line.
+Optimize PNG, JPEG, GIF images with grunt task.
 
 [![Build Status](https://travis-ci.org/1000ch/grunt-image.png?branch=master)](https://travis-ci.org/1000ch/grunt-image)
 [![NPM version](https://badge.fury.io/js/grunt-image.png)](http://badge.fury.io/js/grunt-image)
