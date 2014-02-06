@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
@@ -47,5 +47,17 @@
     "grunt-contrib-nodeunit": "~0.3.0",
     "mocha": "~1.17.1",
     "cache-file": "~0.1.4"
-  }
+  },
+  "keywords": [
+    "compress",
+    "minify",
+    "optimize",
+    "image",
+    "img",
+    "jpg",
+    "jpeg",
+    "png",
+    "gif",
+    "gruntplugin"
+  ]
 }
