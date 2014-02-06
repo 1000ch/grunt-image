@@ -1,13 +1,9 @@
 'use strict';
 
-var cache = require('cache-file');
 var fs = require('fs');
-var grunt = require('grunt');
-var os = require('os');
-var path = require('path');
 
-exports.imagemin = {
-  minifyPng: function (test) {
+exports.image = {
+  minifyPng: function (test) {console.log('aaaaaaaaaaaa');
     test.expect(1);
 
     var actual = fs.statSync('tmp/test.png').size;
@@ -22,14 +18,6 @@ exports.imagemin = {
     var actual = fs.statSync('tmp/test-uppercase.PNG').size;
     var original = fs.statSync('test/fixtures/test-uppercase.PNG').size;
     test.ok(actual < original, 'should minify uppercase extension PNG images');
-
-    test.done();
-  },
-  cachePng: function (test) {
-    test.expect(1);
-
-    var original = path.join(__dirname, 'fixtures/test.png');
-    test.ok(cache.check(original, { name: 'imagemin' }), 'should cache PNG images');
 
     test.done();
   },
@@ -51,14 +39,6 @@ exports.imagemin = {
 
     test.done();
   },
-  cacheJpg: function (test) {
-    test.expect(1);
-
-    var original = path.join(__dirname, 'fixtures/test.jpg');
-    test.ok(cache.check(original, { name: 'imagemin' }), 'should cache JPGimages');
-
-    test.done();
-  },
   minifyGif: function (test) {
     test.expect(1);
 
@@ -74,14 +54,6 @@ exports.imagemin = {
     var actual = fs.statSync('tmp/test-uppercase.GIF').size;
     var original = fs.statSync('test/fixtures/test-uppercase.GIF').size;
     test.ok(actual < original, 'should minify uppercase extension GIF images');
-
-    test.done();
-  },
-  cacheGif: function (test) {
-    test.expect(1);
-
-    var original = path.join(__dirname, 'fixtures/test.gif');
-    test.ok(cache.check(original, { name: 'imagemin' }), 'should cache GIF images');
 
     test.done();
   }

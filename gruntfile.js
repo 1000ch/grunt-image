@@ -25,7 +25,6 @@ module.exports = function (grunt) {
     image: {
       static: {
         options: {
-          qualityRange: '80-100',
           optimizationLevel: 3
         },  
         files: {
@@ -37,6 +36,9 @@ module.exports = function (grunt) {
           'tmp/test-uppercase.GIF': 'test/fixtures/test-uppercase.GIF'
         }
       }
+    },
+    nodeunit: {
+      tests: ['test/test.js']
     }
   });
   

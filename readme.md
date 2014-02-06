@@ -43,7 +43,6 @@ module.exports = function (grunt) {
     image: {
       static: {
         options: {
-          qualityRange: '80-100',
           optimizationLevel: 3
         },
         files: { 
