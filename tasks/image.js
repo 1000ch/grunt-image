@@ -15,7 +15,7 @@ module.exports = function (grunt) {
       interlace: true
     });
 
-    async.forEach(this.files, function (file, next) {
+    async.eachLimit(this.files, 10, function (file, next) {
       var basename = path.basename(file.dest);
       var dir = file.dest.replace(basename, '');
       
