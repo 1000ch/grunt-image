@@ -3,7 +3,7 @@
 var fs = require('fs');
 
 exports.image = {
-  minifyPng: function (test) {console.log('aaaaaaaaaaaa');
+  minifyPng: function (test) {
     test.expect(1);
 
     var actual = fs.statSync('tmp/test.png').size;
