@@ -53,12 +53,13 @@ Optimizer.prototype.pngquant = function () {
 
 Optimizer.prototype.advpng = function () {
   var args = [];
-  args.push('--shrink-insane');
+  args.push('--recompress');
+  args.push('--shrink-extra');
   args.push(this.dest);
 
   return {
     name: 'advpng',
-    path: require('node-advpng').path,
+    path: require('advpng-bin').path,
     args: args
   };
 };
