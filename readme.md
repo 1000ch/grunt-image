@@ -79,8 +79,6 @@ module.exports = function (grunt) {
 --quality      min-max don't save below min, use less colors below max (0-100)
 ```
 
-Execute `./node_modules/pngquant-bin/vendor/pngquant -h` to see more details.
-
 ### optipng
 
 - ✔ https://github.com/yeoman/node-optipng-bin
@@ -93,17 +91,15 @@ Execute `./node_modules/pngquant-bin/vendor/pngquant -h` to see more details.
 -strip <objects>  strip metadata objects (e.g. "all")
 ```
 
-Execute `./node_modules/optipng-bin/vendor/optipng -h` to see more details.
-
 ### advpng
 
-- ✔ https://github.com/colorhook/node-advpng
+- ✔ https://github.com/1000ch/node-advpng-bin
+- https://github.com/colorhook/node-advpng
 
 ```sh
---shrink-normal   Compress normal (7z)
+--recompress      Recompress the specified files
+--shrink-extra    Compress extra (7z)
 ```
-
-Execute `./node_modules/node-advpng/bin/advpng -h` to see more details.
 
 ### zopflipng
 
@@ -124,8 +120,6 @@ Execute `./node_modules/node-advpng/bin/advpng -h` to see more details.
  If this argument is used, all given filter types are tried with slow compression and the best result retained. A good set of filters to try is --filters=0me.
 ```
 
-Execute `./node_modules/node-advpng/bin/advpng -h` to see more details.
-
 ### pngcrush
 
 - ✔ https://github.com/1000ch/node-pngcrush-bin
@@ -136,8 +130,6 @@ Execute `./node_modules/node-advpng/bin/advpng -h` to see more details.
 -brute (use brute-force: try 148 different methods)
 -reduce (do lossless color-type or bit-depth reduction)
 ```
-
-Execute `./node_modules/pngcrush-bin/vendor/pngcrush -h` to see more details.
 
 ## jpg
 
@@ -151,8 +143,6 @@ Execute `./node_modules/pngcrush-bin/vendor/pngcrush -h` to see more details.
 -progressive   Create progressive JPEG file
 ```
 
-Execute `./node_modules/jpegtran-bin/vendor/jpegtran -h` to see more details.
-
 ### jpeg-recompress
 
 - ✔ https://github.com/1000ch/node-jpeg-recompress-bin
@@ -161,8 +151,6 @@ Execute `./node_modules/jpegtran-bin/vendor/jpegtran -h` to see more details.
 -p, --progressive             Set progressive JPEG output
 -s, --strip                   Strip metadata
 ```
-
-Execute `./node_modules/jpeg-recompress-bin/vendor/jpeg-recompress -h` to see more details.
 
 ## gif
 
@@ -178,8 +166,6 @@ Execute `./node_modules/jpeg-recompress-bin/vendor/jpeg-recompress -h` to see mo
 --careful                     Write larger GIFs that avoid bugs in other programs.
 ```
 
-Execute `./node_modules/gifsicle/vendor/gifsicle -h` to see more details.
-
 ## License
 
-MIT.
+MIT
