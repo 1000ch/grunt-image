@@ -6,7 +6,6 @@ var path = require('path');
 var spawn = require('child_process').spawn;
 var execFile = require('child_process').execFile;
 var async = require('async');
-var filesize = require('filesize');
 var grunt = require('grunt');
 
 function Optimizer(options) {
@@ -163,6 +162,26 @@ Optimizer.prototype.getOptimizers = function (extension) {
   return optimizers;
 };
 
+// @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+Math.round10 = function (value, exp) {
+  // If the exp is undefined or zero...
+  if (typeof exp === 'undefined' || +exp === 0) {
+    return Math.round(value);
+  }
+  value = +value;
+  exp = +exp;
+  // If the value is not a number or the exp is not an integer...
+  if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+    return NaN;
+  }
+  // Shift
+  value = value.toString().split('e');
+  value = Math.round(+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+  // Shift back
+  value = value.toString().split('e');
+  return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+};
+
 Optimizer.prototype.optimize = function (callback) {
 
   var src = this.src;
@@ -179,10 +198,12 @@ Optimizer.prototype.optimize = function (callback) {
   async.series(fns, function (error, result) {
     var originalSize = fs.statSync(src).size;
     var optimizedSize = fs.statSync(dest).size;
+    var diffSize = originalSize - optimizedSize;
     callback(error, {
-      original: filesize(originalSize),
-      optimized: filesize(optimizedSize),
-      diff: filesize(originalSize - optimizedSize)
+      original: originalSize,
+      optimized: optimizedSize,
+      diff: diffSize,
+      diffPercent: Math.round10(100 * (diffSize / originalSize), -1)
     });
   });
 };

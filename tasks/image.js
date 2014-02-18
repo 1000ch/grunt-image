@@ -5,6 +5,7 @@ var path = require('path');
 
 var async = require('async');
 var chalk = require('chalk');
+var filesize = require('filesize');
 var Optimizer = require('./lib/optimizer');
 
 module.exports = function (grunt) {
@@ -33,7 +34,12 @@ module.exports = function (grunt) {
         if (error) {
           grunt.warn(error);
         }
-        grunt.log.writeln(chalk.green('✔ ') + file.src[0] + chalk.gray(' (' + data.diff + ' reduced)'));
+        grunt.log.writeln(
+          chalk.green('✔ ') + file.src[0] + chalk.gray(' ->') +
+          chalk.gray(' before=') + chalk.yellow(filesize(data.original)) + 
+          chalk.gray(' after=') + chalk.cyan(filesize(data.optimized)) + 
+          chalk.gray(' reduced=') + chalk.green.underline(filesize(data.diff) + '(' + data.diffPercent + '%)')
+        );
         process.nextTick(next);
       });
     }, function (error) {
