@@ -42,9 +42,6 @@ module.exports = function (grunt) {
   grunt.initConfig({
     image: {
       static: {
-        options: {
-          optimizationLevel: 3
-        },
         files: { 
           'dist/img.png': 'src/img.png',
           'dist/img.jpg': 'src/img.jpg',
