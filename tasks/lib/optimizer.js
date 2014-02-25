@@ -66,6 +66,7 @@ Optimizer.prototype.advpng = function () {
 Optimizer.prototype.pngcrush = function () {
   var args = [];
   args.push('-rem alla');
+  args.push('-rem text');
   args.push('-brute');
   args.push('-reduce');
   args.push(this.dest);
