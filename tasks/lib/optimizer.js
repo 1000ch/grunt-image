@@ -30,7 +30,7 @@ Optimizer.prototype.optipng = function (optimizationLevel) {
 
   return {
     name: 'optipng',
-    path: require('optipng-bin').path, 
+    path: require('optipng-bin').path,
     args: args
   };
 };
@@ -70,7 +70,7 @@ Optimizer.prototype.pngcrush = function () {
   args.push('-brute');
   args.push('-reduce');
   args.push(this.dest);
-  
+
   return {
     name: 'pngcrush',
     path: require('pngcrush-bin').path,
@@ -88,7 +88,7 @@ Optimizer.prototype.zopflipng = function () {
   args.push('--lossy_transparent');
   //args.push(this.src);
   args.push(this.dest);
-  
+
   return {
     name: 'zopflipng',
     path: require('zopflipng-bin').path,
@@ -119,7 +119,7 @@ Optimizer.prototype.jpegtran = function () {
   args.push('-outfile');
   args.push(this.dest);
   args.push(this.src);
-  
+
   return {
     name: 'jpegtran',
     path: require('jpegtran-bin').path,
@@ -133,7 +133,7 @@ Optimizer.prototype.jpegRecompress = function () {
   args.push('--strip');
   args.push(this.dest);
   args.push(this.dest);
-  
+
   return {
     name: 'jpeg-recompress',
     path: require('jpeg-recompress-bin').path,
@@ -164,7 +164,7 @@ Optimizer.prototype.getOptimizers = function (extension) {
 };
 
 // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
-Math.round10 = function (value, exp) {
+function _round10 (value, exp) {
   // If the exp is undefined or zero...
   if (typeof exp === 'undefined' || +exp === 0) {
     return Math.round(value);
@@ -181,7 +181,7 @@ Math.round10 = function (value, exp) {
   // Shift back
   value = value.toString().split('e');
   return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
-};
+}
 
 Optimizer.prototype.optimize = function (callback) {
 
@@ -195,7 +195,7 @@ Optimizer.prototype.optimize = function (callback) {
       });
     };
   });
-  
+
   async.series(fns, function (error, result) {
     var originalSize = fs.statSync(src).size;
     var optimizedSize = fs.statSync(dest).size;
@@ -204,7 +204,7 @@ Optimizer.prototype.optimize = function (callback) {
       original: originalSize,
       optimized: optimizedSize,
       diff: diffSize,
-      diffPercent: Math.round10(100 * (diffSize / originalSize), -1)
+      diffPercent: _round10(100 * (diffSize / originalSize), -1)
     });
   });
 };

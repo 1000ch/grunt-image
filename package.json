@@ -1,13 +1,15 @@
 {
   "name": "grunt-image",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
     "url": "git://github.com/1000ch/grunt-image.git"
   },
   "author": {
-    "name": "1000ch"
+    "name": "Shogo Sensui",
+    "email": "shogo.sensui@gmail.com",
+    "web": "http://1000ch.net/"
   },
   "license": "MIT",
   "engines": {
