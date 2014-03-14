@@ -19,11 +19,11 @@ module.exports = function (grunt) {
     async.eachLimit(this.files, 10, function (file, next) {
       var basename = path.basename(file.dest);
       var dir = file.dest.replace(basename, '');
-      
+
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
       }
-      
+
       var optimizer = new Optimizer({
         src: file.src[0],
         dest: file.dest,
@@ -33,20 +33,22 @@ module.exports = function (grunt) {
       optimizer.optimize(function (error, data) {
         if (error) {
           grunt.warn(error);
+          return next(error);
         }
         grunt.log.writeln(
           chalk.green('✔ ') + file.src[0] + chalk.gray(' ->') +
-          chalk.gray(' before=') + chalk.yellow(filesize(data.original)) + 
-          chalk.gray(' after=') + chalk.cyan(filesize(data.optimized)) + 
+          chalk.gray(' before=') + chalk.yellow(filesize(data.original)) +
+          chalk.gray(' after=') + chalk.cyan(filesize(data.optimized)) +
           chalk.gray(' reduced=') + chalk.green.underline(filesize(data.diff) + '(' + data.diffPercent + '%)')
         );
-        process.nextTick(next);
+        next();
       });
     }, function (error) {
       if (error) {
         grunt.warn(error);
-        done();
+        return done(error);
       }
+      done();
     });
   });
 };
