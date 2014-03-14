@@ -195,8 +195,8 @@ Optimizer.prototype.optimize = function (callback) {
     };
   });
 
+  var originalSize = fs.statSync(src).size;
   async.series(fns, function (error, result) {
-    var originalSize = fs.statSync(src).size;
     var optimizedSize = fs.statSync(dest).size;
     var diffSize = originalSize - optimizedSize;
     callback(error, {
