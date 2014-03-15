@@ -128,6 +128,17 @@ module.exports = function (grunt) {
 -reduce (do lossless color-type or bit-depth reduction)
 ```
 
+### pngout
+
+- ✔ https://github.com/1000ch/node-pngout-bin
+
+```sh
+-s# Select strategy. 0:Xtreme(default), 1:Intense, 2:Longest Match,
+   3:Huffman Only, 4:Uncompressed
+-k(Chunk,Chunk,..) Preserve only named chunk(s). Example: -kgAMA,bKGD,tEXt
+-f# PNG output filter: 0=none, 1=x, 2=y, 3=x&y, 4=Paeth, 5=mixed, 6=reuse
+```
+
 ## jpg
 
 ### jpegtran
