@@ -77,6 +77,21 @@ Optimizer.prototype.pngcrush = function () {
   };
 };
 
+Optimizer.prototype.pngout = function () {
+  var args = [];
+  args.push('-s0');
+  args.push('-k0');
+  args.push('-f0');
+  args.push(this.dest);
+  args.push(this.dest);
+
+  return {
+    name: 'pngout',
+    path: require('pngout-bin').path,
+    args: args
+  };
+};
+
 Optimizer.prototype.zopflipng = function () {
   var args = [];
   args.push('-m');
@@ -150,6 +165,7 @@ Optimizer.prototype.getOptimizers = function (extension) {
       optimizers.push(this.zopflipng());
       optimizers.push(this.pngcrush());
       optimizers.push(this.advpng());
+      optimizers.push(this.pngout());
       break;
     case '.jpg':
       optimizers.push(this.jpegtran());
