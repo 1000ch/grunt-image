@@ -63,6 +63,8 @@ module.exports = function (grunt) {
 };
 ```
 
+![](https://raw.github.com/1000ch/grunt-image/master/screenshot/terminal.png)
+
 ## png
 
 ### pngquant
