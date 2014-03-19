@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "0.4.14",
+  "version": "0.5.0",
   "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
@@ -38,16 +38,13 @@
     "advpng-bin": "~0.1.2",
     "pngout-bin": "^0.1.0"
   },
-  "peerDependencies": {
-    "grunt": "~0.4.2"
-  },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-cli": "~0.1.13",
-    "grunt-contrib-jshint": "^0.8.0",
-    "grunt-jsvalidate": "~0.2.2",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-nodeunit": "~0.3.0",
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-jsvalidate": "^0.2.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
     "mocha": "^1.17.1",
     "cache-file": "~0.1.4"
   },
