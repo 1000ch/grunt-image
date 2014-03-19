@@ -25,7 +25,15 @@ module.exports = function (grunt) {
     image: {
       static: {
         options: {
-          optimizationLevel: 3
+          optipng: true,
+          pngquant: false,
+          zopflipng: false,
+          pngcrush: false,
+          advpng: false,
+          pngout: false,
+          jpegtran: false,
+          jpegRecompress: false,
+          gifsicle: false
         },  
         files: {
           'tmp/test.png': 'test/fixtures/test.png',

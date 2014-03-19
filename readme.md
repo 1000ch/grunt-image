@@ -63,6 +63,35 @@ module.exports = function (grunt) {
 };
 ```
 
+You can specify optimizer to apply manually.
+
+```js
+module.exports = function (grunt) {
+  grunt.initConfig({
+    image: {
+      static: {
+        options: {
+          optipng: true,
+          pngquant: false,
+          zopflipng: true,
+          pngcrush: false,
+          advpng: true,
+          pngout: false,
+          jpegtran: true,
+          jpegRecompress: false,
+          gifsicle: false
+        },  
+        files: { 
+          'dist/img.png': 'src/img.png',
+          'dist/img.jpg': 'src/img.jpg',
+          'dist/img.gif': 'src/img.gif'
+        }
+      }
+    }
+  });
+};
+```
+
 ## Result
 
 ![](https://raw.github.com/1000ch/grunt-image/master/screenshot/terminal.png)
@@ -72,8 +101,6 @@ module.exports = function (grunt) {
 ### pngquant
 
 - ✔ https://github.com/sindresorhus/node-pngquant-bin
-- https://github.com/zauni/node-pngquant-bin
-- https://github.com/papandreou/node-pngquant
 
 ```sh
 --speed N         speed/quality trade-off. 1=slow, 3=default, 11=fast & rough
@@ -83,7 +110,6 @@ module.exports = function (grunt) {
 ### optipng
 
 - ✔ https://github.com/yeoman/node-optipng-bin
-- https://github.com/papandreou/node-optipng
 
 ```sh
 -fix           enable error recovery
@@ -95,7 +121,6 @@ module.exports = function (grunt) {
 ### advpng
 
 - ✔ https://github.com/1000ch/node-advpng-bin
-- https://github.com/colorhook/node-advpng
 
 ```sh
 --recompress      Recompress the specified files
@@ -124,7 +149,6 @@ module.exports = function (grunt) {
 ### pngcrush
 
 - ✔ https://github.com/1000ch/node-pngcrush-bin
-- https://github.com/papandreou/node-pngcrush
 
 ```sh
 -rem chunkname (or "alla" or "allb")
@@ -148,7 +172,6 @@ module.exports = function (grunt) {
 ### jpegtran
 
 - ✔ https://github.com/yeoman/node-jpegtran-bin
-- https://github.com/papandreou/node-jpegtran
 
 ```sh
 -optimize      Optimize Huffman table (smaller file, but slow compression)
