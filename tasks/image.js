@@ -11,7 +11,17 @@ var Optimizer = require('./lib/optimizer');
 module.exports = function (grunt) {
   grunt.registerMultiTask('image', 'Optimize PNG, JPEG, GIF images.', function() {
     var done = this.async();
-    var options = this.options({});
+    var options = this.options({
+      optipng: true,
+      pngquant: true,
+      zopflipng: true,
+      pngcrush: true,
+      advpng: true,
+      pngout: true,
+      jpegtran: true,
+      jpegRecompress: true,
+      gifsicle: true
+    });
 
     async.eachLimit(this.files, 10, function (file, next) {
       var basename = path.basename(file.dest);
