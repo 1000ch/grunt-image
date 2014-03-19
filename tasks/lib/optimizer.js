@@ -160,37 +160,19 @@ Optimizer.prototype.getOptimizers = function (extension) {
   extension = extension.toLowerCase();
   switch (extension) {
     case '.png':
-      if (this.options.optipng) {
-        optimizers.push(this.optipng());
-      }
-      if (this.options.pngquant) {
-        optimizers.push(this.pngquant());
-      }
-      if (this.options.zopflipng) {
-        optimizers.push(this.zopflipng());
-      }
-      if (this.options.pngcrush) {
-        optimizers.push(this.pngcrush());
-      }
-      if (this.options.advpng) {
-        optimizers.push(this.advpng());
-      }
-      if (this.options.pngout) {
-        optimizers.push(this.pngout());
-      }
+      optimizers.push(this.optipng());
+      optimizers.push(this.pngquant());
+      optimizers.push(this.zopflipng());
+      optimizers.push(this.pngcrush());
+      optimizers.push(this.advpng());
+      optimizers.push(this.pngout());
       break;
     case '.jpg':
-      if (this.options.jpegtran) {
-        optimizers.push(this.jpegtran());
-      }
-      if (this.options.jpegRecompress) {
-        optimizers.push(this.jpegRecompress());
-      }
+      optimizers.push(this.jpegtran());
+      optimizers.push(this.jpegRecompress());
       break;
     case '.gif':
-      if (this.options.gifsicle) {
-        optimizers.push(this.gifsicle());
-      }
+      optimizers.push(this.gifsicle());
       break;
   }
   return optimizers;
