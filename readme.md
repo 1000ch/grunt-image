@@ -63,35 +63,6 @@ module.exports = function (grunt) {
 };
 ```
 
-You can specify optimizer to apply manually.
-
-```js
-module.exports = function (grunt) {
-  grunt.initConfig({
-    image: {
-      static: {
-        options: {
-          optipng: true,
-          pngquant: false,
-          zopflipng: true,
-          pngcrush: false,
-          advpng: true,
-          pngout: false,
-          jpegtran: true,
-          jpegRecompress: false,
-          gifsicle: false
-        },  
-        files: { 
-          'dist/img.png': 'src/img.png',
-          'dist/img.jpg': 'src/img.jpg',
-          'dist/img.gif': 'src/img.gif'
-        }
-      }
-    }
-  });
-};
-```
-
 ## Result
 
 ![](https://raw.github.com/1000ch/grunt-image/master/screenshot/terminal.png)
