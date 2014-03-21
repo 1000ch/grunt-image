@@ -67,7 +67,7 @@ module.exports = function (grunt) {
 
 ![](https://raw.github.com/1000ch/grunt-image/master/screenshot/terminal.png)
 
-## png
+## PNG Optimizers
 
 ### pngquant
 
@@ -138,7 +138,7 @@ module.exports = function (grunt) {
 -f# PNG output filter: 0=none, 1=x, 2=y, 3=x&y, 4=Paeth, 5=mixed, 6=reuse
 ```
 
-## jpg
+## JPEG Optimizers
 
 ### jpegtran
 
@@ -158,7 +158,18 @@ module.exports = function (grunt) {
 -s, --strip                   Strip metadata
 ```
 
-## gif
+### jpegoptim
+
+- ✔ https://github.com/1000ch/node-jpegoptim-bin 
+
+```sh
+--strip-all       strip all (Comment & Exif) markers from output file
+--strip-iptc      strip IPTC markers from output file
+--strip-icc       strip ICC profile markers from output file
+--all-progressive force all output files to be progressive
+```
+
+## GIF Optimizers
 
 ### gifsicle
 
