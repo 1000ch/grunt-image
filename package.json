@@ -38,7 +38,8 @@
     "advpng-bin": "^0.1.2",
     "pngout-bin": "^0.1.0",
     "jpegoptim-bin": "^0.1.0",
-    "cache-file": "^0.1.7"
+    "cache-file": "^0.1.7",
+    "mkdirp": "^0.3.5"
   },
   "devDependencies": {
     "grunt": "^0.4.4",

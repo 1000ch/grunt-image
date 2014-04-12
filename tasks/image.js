@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 
+var mkdirp = require('mkdirp');
 var async = require('async');
 var chalk = require('chalk');
 var filesize = require('filesize');
@@ -14,12 +15,9 @@ module.exports = function (grunt) {
     var options = this.options({});
 
     async.eachLimit(this.files, 10, function (file, next) {
-      var basename = path.basename(file.dest);
-      var dir = file.dest.replace(basename, '');
 
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir);
-      }
+      // make directory if does not exist
+      mkdirp.sync(path.dirname(file.dest));
 
       var optimizer = new Optimizer({
         src: file.src[0],
