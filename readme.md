@@ -9,8 +9,6 @@ Optimize PNG, JPEG, GIF images with grunt task.
 [![Dependency Status](https://david-dm.org/1000ch/grunt-image.svg)](https://david-dm.org/1000ch/grunt-image)
 [![devDependency Status](https://david-dm.org/1000ch/grunt-image/dev-status.svg)](https://david-dm.org/1000ch/grunt-image#info=devDependencies)
 
-[![NPM](https://nodei.co/npm/grunt-image.png)](https://nodei.co/npm/grunt-image/)
-
 ## Dependency
 
 `jpeg-recompress` requires `libjpeg-turbo`, so you have to install some libraries before getting `grunt-image`.
