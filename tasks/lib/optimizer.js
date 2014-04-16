@@ -3,10 +3,8 @@
 var fs = require('fs');
 var path = require('path');
 
-var spawn = require('child_process').spawn;
 var execFile = require('child_process').execFile;
 var async = require('async');
-var grunt = require('grunt');
 
 function Optimizer(param) {
   this.options = param.options || {};

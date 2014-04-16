@@ -5,9 +5,9 @@
 Optimize PNG, JPEG, GIF images with grunt task.
 
 [![Build Status](https://travis-ci.org/1000ch/grunt-image.svg?branch=master)](https://travis-ci.org/1000ch/grunt-image)
-[![NPM version](https://badge.fury.io/js/grunt-image.png)](http://badge.fury.io/js/grunt-image)
-[![Dependency Status](https://david-dm.org/1000ch/grunt-image.png)](https://david-dm.org/1000ch/grunt-image)
-[![devDependency Status](https://david-dm.org/1000ch/grunt-image/dev-status.png)](https://david-dm.org/1000ch/grunt-image#info=devDependencies)
+[![NPM version](https://badge.fury.io/js/grunt-image.svg)](http://badge.fury.io/js/grunt-image)
+[![Dependency Status](https://david-dm.org/1000ch/grunt-image.svg)](https://david-dm.org/1000ch/grunt-image)
+[![devDependency Status](https://david-dm.org/1000ch/grunt-image/dev-status.svg)](https://david-dm.org/1000ch/grunt-image#info=devDependencies)
 
 [![NPM](https://nodei.co/npm/grunt-image.png)](https://nodei.co/npm/grunt-image/)
 
