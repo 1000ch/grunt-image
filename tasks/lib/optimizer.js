@@ -180,7 +180,7 @@ Optimizer.prototype.getOptimizers = function (extension) {
       optimizers.push(this.zopflipng());
       optimizers.push(this.pngcrush());
       optimizers.push(this.advpng());
-      optimizers.push(this.pngout());
+      //optimizers.push(this.pngout());
       break;
     case '.jpg':
       optimizers.push(this.jpegtran());
