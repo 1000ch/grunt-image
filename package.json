@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Optimize PNG, JPEG, GIF images.",
   "repository": {
     "type": "git",
@@ -23,22 +23,22 @@
   },
   "homepage": "https://github.com/1000ch/grunt-image",
   "dependencies": {
-    "async": "^0.7.0",
+    "advpng-bin": "^0.1.5",
+    "async": "^0.9.0",
     "chalk": "^0.4.0",
     "filesize": "^2.0.3",
     "gifsicle": "^0.1.5",
-    "jpegtran-bin": "^0.2.6",
-    "mkdirp": "^0.3.5",
-    "optipng-bin": "^0.3.3",
-    "pngcrush-bin": "^0.1.13",
-    "pngquant-bin": "^0.1.7",
-    "jpeg-recompress-bin": "^0.1.2",
-    "zopflipng-bin": "^0.1.9",
+    "jpeg-recompress-bin": "^0.1.4",
     "jpegoptim-bin": "^0.1.4",
-    "advpng-bin": "^0.1.5"
+    "jpegtran-bin": "^0.2.6",
+    "mkdirp": "^0.5.0",
+    "optipng-bin": "^0.3.8",
+    "pngcrush-bin": "^0.1.13",
+    "pngquant-bin": "^0.3.1",
+    "zopflipng-bin": "^0.1.9"
   },
   "devDependencies": {
-    "grunt": "^0.4.4",
+    "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-jshint": "^0.10.0",
