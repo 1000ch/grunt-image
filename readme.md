@@ -2,7 +2,7 @@
 
 ## About
 
-Optimize PNG, JPEG, GIF images with grunt task.
+Optimize PNG, JPEG, GIF, SVG images with grunt task.
 
 [![Build Status](https://travis-ci.org/1000ch/grunt-image.svg?branch=master)](https://travis-ci.org/1000ch/grunt-image)
 [![NPM version](https://badge.fury.io/js/grunt-image.svg)](http://badge.fury.io/js/grunt-image)
@@ -168,19 +168,23 @@ module.exports = function (grunt) {
 --all-progressive force all output files to be progressive
 ```
 
-## GIF Optimizers
+## GIF Optimizer
 
 ### gifsicle
 
 - ✔ https://github.com/yeoman/node-gifsicle
-
-### Using options
 
 ```sh
 -i, --interlace               Turn on interlacing.
 -O, --optimize[=LEVEL]        Optimize output GIFs.
 --careful                     Write larger GIFs that avoid bugs in other programs.
 ```
+
+## SVG Optimizer
+
+### SVGO
+
+- ✔ https://github.com/svg/svgo
 
 ## License
 
