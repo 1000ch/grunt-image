@@ -70,7 +70,7 @@ module.exports = function (grunt) {
 
 ### pngquant
 
-- ✔ https://github.com/sindresorhus/node-pngquant-bin
+- ✔ https://github.com/kevva/pngquant-bin
 
 ```sh
 --speed N         speed/quality trade-off. 1=slow, 3=default, 11=fast & rough
