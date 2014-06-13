@@ -170,6 +170,18 @@ Optimizer.prototype.jpegoptim = function () {
   };
 };
 
+Optimizer.prototype.svgo = function () {
+  var args = [];
+  args.push(this.src);
+  args.push(this.dest);
+
+  return {
+    name: 'svgo',
+    path: './node_modules/svgo/bin/svgo',
+    args: args
+  };
+};
+
 Optimizer.prototype.getOptimizers = function (extension) {
   var optimizers = [];
   extension = extension.toLowerCase();
@@ -189,6 +201,9 @@ Optimizer.prototype.getOptimizers = function (extension) {
       break;
     case '.gif':
       optimizers.push(this.gifsicle());
+      break;
+    case '.svg':
+      optimizers.push(this.svgo());
       break;
   }
   return optimizers;

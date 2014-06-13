@@ -56,5 +56,23 @@ exports.image = {
     test.ok(actual < original, 'should minify uppercase extension GIF images');
 
     test.done();
+  },
+  minifySVG: function (test) {
+    test.expect(1);
+
+    var actual = fs.statSync('tmp/test.svg').size;
+    var original = fs.statSync('test/fixtures/test.svg').size;
+    test.ok(actual < original, 'should minify SVG images');
+
+    test.done();
+  },
+  minifyUppercaseSVG: function (test) {
+    test.expect(1);
+
+    var actual = fs.statSync('tmp/test-uppercase.SVG').size;
+    var original = fs.statSync('test/fixtures/test-uppercase.SVG').size;
+    test.ok(actual < original, 'should minify uppercase extension SVG images');
+
+    test.done();
   }
 };
