@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Optimize PNG, JPEG, GIF, SVG images.",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "chalk": "^0.4.0",
     "filesize": "^2.0.3",
     "gifsicle": "^0.1.5",
-    "jpeg-recompress-bin": "^0.1.4",
+    "jpeg-recompress-bin": "^0.1.5",
     "jpegoptim-bin": "^0.1.4",
     "jpegtran-bin": "^0.2.6",
     "mkdirp": "^0.5.0",
