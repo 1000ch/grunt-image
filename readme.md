@@ -8,6 +8,7 @@ Optimize PNG, JPEG, GIF, SVG images with grunt task.
 [![NPM version](https://badge.fury.io/js/grunt-image.svg)](http://badge.fury.io/js/grunt-image)
 [![Dependency Status](https://david-dm.org/1000ch/grunt-image.svg)](https://david-dm.org/1000ch/grunt-image)
 [![devDependency Status](https://david-dm.org/1000ch/grunt-image/dev-status.svg)](https://david-dm.org/1000ch/grunt-image#info=devDependencies)
+[![Analytics](https://ga-beacon.appspot.com/UA-49530352-2/grunt-image/readme)](https://github.com/1000ch/grunt-image)
 
 ## Dependency
 
@@ -33,7 +34,7 @@ $ npm install --save-dev grunt-image
 
 ## Usage
 
-This is `gruntfile.js` sample similar to [`grunt-contrib-imagemin`](https://github.com/gruntjs/grunt-contrib-imagemin) one. 
+This is an example of `gruntfile.js`. 
 
 ```js
 module.exports = function (grunt) {
