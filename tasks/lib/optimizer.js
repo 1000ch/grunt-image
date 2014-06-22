@@ -21,9 +21,9 @@ Optimizer.prototype.optipng = function () {
   args.push('-fix');
   args.push('-o7');
   args.push('-force');
-  args.push('-out');
+  //args.push('-out');
   args.push(this.dest);
-  args.push(this.src);
+  //args.push(this.src);
 
   return {
     name: 'optipng',
@@ -113,9 +113,9 @@ Optimizer.prototype.gifsicle = function () {
   //args.push('--careful');
   //args.push('--interlace');
   args.push('--optimize');
-  args.push('--output');
+  //args.push('--output');
   args.push(this.dest);
-  args.push(this.src);
+  //args.push(this.src);
 
   return {
     name: 'gifsicle',
@@ -128,9 +128,9 @@ Optimizer.prototype.jpegtran = function () {
   var args = [];
   args.push('-optimize');
   args.push('-progressive');
-  args.push('-outfile');
+  //args.push('-outfile');
   args.push(this.dest);
-  args.push(this.src);
+  //args.push(this.src);
 
   return {
     name: 'jpegtran',
@@ -172,7 +172,7 @@ Optimizer.prototype.jpegoptim = function () {
 
 Optimizer.prototype.svgo = function () {
   var args = [];
-  args.push(this.src);
+  args.push(this.dest);
   args.push(this.dest);
 
   return {
@@ -187,23 +187,43 @@ Optimizer.prototype.getOptimizers = function (extension) {
   extension = extension.toLowerCase();
   switch (extension) {
     case '.png':
-      optimizers.push(this.optipng());
-      optimizers.push(this.pngquant());
-      optimizers.push(this.zopflipng());
-      optimizers.push(this.pngcrush());
-      optimizers.push(this.advpng());
+      if (this.options.optipng) {
+        optimizers.push(this.optipng());
+      }
+      if (this.options.pngquant) {
+        optimizers.push(this.pngquant());
+      }
+      if (this.options.zopflipng) {
+        optimizers.push(this.zopflipng());
+      }
+      if (this.options.pngcrush) {
+        optimizers.push(this.pngcrush());
+      }
+      if (this.options.advpng) {
+        optimizers.push(this.advpng());
+      }
       //optimizers.push(this.pngout());
       break;
     case '.jpg':
-      optimizers.push(this.jpegtran());
-      optimizers.push(this.jpegRecompress());
-      optimizers.push(this.jpegoptim());
+      if (this.options.jpegtran) {
+        optimizers.push(this.jpegtran());
+      }
+      if (this.options.jpegRecompress) {
+        optimizers.push(this.jpegRecompress());
+      }
+      if (this.options.jpegoptim) {
+        optimizers.push(this.jpegoptim());
+      }
       break;
     case '.gif':
-      optimizers.push(this.gifsicle());
+      if (this.options.gifsicle) {
+        optimizers.push(this.gifsicle());
+      }
       break;
     case '.svg':
-      optimizers.push(this.svgo());
+      if (this.options.svgo) {
+        optimizers.push(this.svgo());
+      }
       break;
   }
   return optimizers;
