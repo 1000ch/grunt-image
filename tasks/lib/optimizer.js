@@ -21,9 +21,7 @@ Optimizer.prototype.optipng = function () {
   args.push('-fix');
   args.push('-o7');
   args.push('-force');
-  //args.push('-out');
   args.push(this.dest);
-  //args.push(this.src);
 
   return {
     name: 'optipng',
@@ -98,7 +96,6 @@ Optimizer.prototype.zopflipng = function () {
   args.push('--filters=01234mepb');
   args.push('--lossy_8bit');
   args.push('--lossy_transparent');
-  //args.push(this.src);
   args.push(this.dest);
 
   return {
@@ -113,9 +110,7 @@ Optimizer.prototype.gifsicle = function () {
   //args.push('--careful');
   //args.push('--interlace');
   args.push('--optimize');
-  //args.push('--output');
   args.push(this.dest);
-  //args.push(this.src);
 
   return {
     name: 'gifsicle',
@@ -128,9 +123,7 @@ Optimizer.prototype.jpegtran = function () {
   var args = [];
   args.push('-optimize');
   args.push('-progressive');
-  //args.push('-outfile');
   args.push(this.dest);
-  //args.push(this.src);
 
   return {
     name: 'jpegtran',

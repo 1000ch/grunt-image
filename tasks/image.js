@@ -27,16 +27,19 @@ module.exports = function (grunt) {
     });
 
     async.eachLimit(this.files, 10, function (file, next) {
+      
+      var src = file.src[0];
+      var dest = file.dest;
 
       // make directory if does not exist
-      mkdirp.sync(path.dirname(file.dest));
+      mkdirp.sync(path.dirname(dest));
       
       // copy src file to dest
-      fs.createReadStream(file.src[0]).pipe(fs.createWriteStream(file.dest));
+      fs.createReadStream(src).pipe(fs.createWriteStream(dest));
 
       var optimizer = new Optimizer({
-        src: file.src[0],
-        dest: file.dest,
+        src: src,
+        dest: dest,
         options: options
       });
 
@@ -46,7 +49,7 @@ module.exports = function (grunt) {
           return next(error);
         }
         grunt.log.writeln(
-          chalk.green('✔ ') + file.src[0] + chalk.gray(' ->') +
+          chalk.green('✔ ') + src + chalk.gray(' ->') +
           chalk.gray(' before=') + chalk.yellow(filesize(data.original)) +
           chalk.gray(' after=') + chalk.cyan(filesize(data.optimized)) +
           chalk.gray(' reduced=') + chalk.green.underline(filesize(data.diff) + '(' + data.diffPercent + '%)')
