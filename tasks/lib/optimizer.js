@@ -110,6 +110,8 @@ Optimizer.prototype.gifsicle = function () {
   //args.push('--careful');
   //args.push('--interlace');
   args.push('--optimize');
+  args.push('--output');
+  args.push(this.dest);
   args.push(this.dest);
 
   return {
