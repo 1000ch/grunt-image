@@ -27,7 +27,7 @@
     "async": "^0.9.0",
     "chalk": "^0.4.0",
     "filesize": "^2.0.3",
-    "gifsicle": "^0.1.5",
+    "gifsicle": "^0.1.6",
     "jpeg-recompress-bin": "^0.1.5",
     "jpegoptim-bin": "^0.1.4",
     "jpegtran-bin": "^0.2.6",
