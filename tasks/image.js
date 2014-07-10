@@ -33,9 +33,6 @@ module.exports = function (grunt) {
 
       // make directory if does not exist
       mkdirp.sync(path.dirname(dest));
-      
-      // copy src file to dest
-      fs.createReadStream(src).pipe(fs.createWriteStream(dest));
 
       var optimizer = new Optimizer({
         src: src,

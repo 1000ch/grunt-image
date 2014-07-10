@@ -5,13 +5,18 @@ var path = require('path');
 
 var execFile = require('child_process').execFile;
 var async = require('async');
+var tempfile = require('tempfile');
 
 function Optimizer(param) {
   this.options = param.options || {};
   this.src = param.src;
+  this.tmp = tempfile(path.extname(this.src));
   this.dest = param.dest || this.src;
   this.extension = path.extname(this.src);
   this.optimizers = this.getOptimizers(this.extension);
+
+  // copy src file to tmp
+  fs.writeFileSync(this.tmp, fs.readFileSync(this.src));
 }
 
 Optimizer.prototype.optipng = function () {
@@ -21,7 +26,7 @@ Optimizer.prototype.optipng = function () {
   args.push('-fix');
   args.push('-o7');
   args.push('-force');
-  args.push(this.dest);
+  args.push(this.tmp);
 
   return {
     name: 'optipng',
@@ -36,7 +41,7 @@ Optimizer.prototype.pngquant = function () {
   args.push('--speed=1');
   args.push('--force');
   args.push('256');
-  args.push(this.dest);
+  args.push(this.tmp);
 
   return {
     name: 'pngquant',
@@ -49,7 +54,7 @@ Optimizer.prototype.advpng = function () {
   var args = [];
   args.push('--recompress');
   args.push('--shrink-extra');
-  args.push(this.dest);
+  args.push(this.tmp);
 
   return {
     name: 'advpng',
@@ -64,7 +69,7 @@ Optimizer.prototype.pngcrush = function () {
   args.push('-rem text');
   args.push('-brute');
   args.push('-reduce');
-  args.push(this.dest);
+  args.push(this.tmp);
 
   return {
     name: 'pngcrush',
@@ -78,8 +83,8 @@ Optimizer.prototype.pngout = function () {
   args.push('-s0');
   args.push('-k0');
   args.push('-f0');
-  args.push(this.dest);
-  args.push(this.dest);
+  args.push(this.tmp);
+  args.push(this.tmp);
 
   return {
     name: 'pngout',
@@ -96,7 +101,7 @@ Optimizer.prototype.zopflipng = function () {
   args.push('--filters=01234mepb');
   args.push('--lossy_8bit');
   args.push('--lossy_transparent');
-  args.push(this.dest);
+  args.push(this.tmp);
 
   return {
     name: 'zopflipng',
@@ -111,8 +116,8 @@ Optimizer.prototype.gifsicle = function () {
   //args.push('--interlace');
   args.push('--optimize');
   args.push('--output');
-  args.push(this.dest);
-  args.push(this.dest);
+  args.push(this.tmp);
+  args.push(this.tmp);
 
   return {
     name: 'gifsicle',
@@ -125,7 +130,7 @@ Optimizer.prototype.jpegtran = function () {
   var args = [];
   args.push('-optimize');
   args.push('-progressive');
-  args.push(this.dest);
+  args.push(this.tmp);
 
   return {
     name: 'jpegtran',
@@ -138,8 +143,8 @@ Optimizer.prototype.jpegRecompress = function () {
   var args = [];
   args.push('--progressive');
   args.push('--strip');
-  args.push(this.dest);
-  args.push(this.dest);
+  args.push(this.tmp);
+  args.push(this.tmp);
 
   return {
     name: 'jpeg-recompress',
@@ -155,8 +160,8 @@ Optimizer.prototype.jpegoptim = function () {
   args.push('--strip-iptc');
   args.push('--strip-icc');
   args.push('--all-progressive');
-  args.push('--dest=' + this.dest);
-  args.push(this.dest);
+  args.push('--dest=' + this.tmp);
+  args.push(this.tmp);
 
   return {
     name: 'jpegoptim',
@@ -167,8 +172,8 @@ Optimizer.prototype.jpegoptim = function () {
 
 Optimizer.prototype.svgo = function () {
   var args = [];
-  args.push(this.dest);
-  args.push(this.dest);
+  args.push(this.tmp);
+  args.push(this.tmp);
 
   return {
     name: 'svgo',
@@ -247,6 +252,7 @@ function _round10 (value, exp) {
 Optimizer.prototype.optimize = function (callback) {
 
   var src = this.src;
+  var tmp = this.tmp;
   var dest = this.dest;
 
   var fns = this.optimizers.map(function (optimizer) {
@@ -259,8 +265,13 @@ Optimizer.prototype.optimize = function (callback) {
 
   var originalSize = fs.statSync(src).size;
   async.series(fns, function (error, result) {
+
+    fs.writeFileSync(dest, fs.readFileSync(tmp));
+    fs.unlinkSync(tmp);
+
     var optimizedSize = fs.statSync(dest).size;
     var diffSize = originalSize - optimizedSize;
+
     callback(error, {
       original: originalSize,
       optimized: optimizedSize,
