@@ -23,21 +23,21 @@
   },
   "homepage": "https://github.com/1000ch/grunt-image",
   "dependencies": {
-    "advpng-bin": "^0.1.5",
+    "advpng-bin": "^0.1.6",
     "async": "^0.9.0",
     "chalk": "^0.5.1",
     "filesize": "^2.0.3",
     "gifsicle": "^0.1.6",
-    "jpeg-recompress-bin": "^0.1.5",
+    "jpeg-recompress-bin": "^0.1.6",
     "jpegoptim-bin": "^0.1.4",
     "jpegtran-bin": "^0.2.7",
     "mkdirp": "^0.5.0",
     "optipng-bin": "^0.3.9",
-    "pngcrush-bin": "^0.1.15",
+    "pngcrush-bin": "^0.1.16",
     "pngquant-bin": "^0.3.1",
     "svgo": "^0.4.4",
     "tempfile": "^0.1.3",
-    "zopflipng-bin": "^0.1.9"
+    "zopflipng-bin": "^0.1.11"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
