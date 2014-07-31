@@ -263,19 +263,30 @@ Optimizer.prototype.optimize = function (callback) {
     };
   });
 
-  var originalSize = fs.statSync(src).size;
   async.series(fns, function (error, result) {
 
-    fs.writeFileSync(dest, fs.readFileSync(tmp));
-    fs.unlinkSync(tmp);
-
-    var optimizedSize = fs.statSync(dest).size;
+    var isOptimized = null;
+    var originalSize = fs.statSync(src).size;
+    var optimizedSize = fs.statSync(tmp).size;
     var diffSize = originalSize - optimizedSize;
 
+    if (diffSize > 0) {
+      // optimized size is smaller
+      isOptimized = true;
+      fs.writeFileSync(dest, fs.readFileSync(tmp));
+      fs.unlinkSync(tmp);
+    } else {
+      // original size is smaller
+      isOptimized = false;
+      fs.writeFileSync(dest, fs.readFileSync(src));
+      fs.unlinkSync(tmp);
+    }
+
     callback(error, {
-      original: originalSize,
-      optimized: optimizedSize,
-      diff: diffSize,
+      isOptimized: isOptimized,
+      originalSize: originalSize,
+      optimizedSize: optimizedSize,
+      diffSize: diffSize,
       diffPercent: _round10(100 * (diffSize / originalSize), -1)
     });
   });
