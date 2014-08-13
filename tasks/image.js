@@ -9,7 +9,7 @@ var filesize = require('filesize');
 var Optimizer = require('./lib/optimizer');
 
 module.exports = function (grunt) {
-  grunt.registerMultiTask('image', 'Optimize PNG, JPEG, GIF images.', function() {
+  grunt.registerMultiTask('image', 'Optimize PNG, JPEG, GIF, SVG images.', function() {
 
     var done = this.async();
     var options = this.options({
@@ -21,6 +21,7 @@ module.exports = function (grunt) {
       pngout: true,
       jpegtran: true,
       jpegRecompress: true,
+      mozjpeg: true,
       jpegoptim: true,
       gifsicle: true,
       svgo: true

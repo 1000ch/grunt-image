@@ -170,6 +170,20 @@ Optimizer.prototype.jpegoptim = function () {
   };
 };
 
+Optimizer.prototype.mozjpeg = function () {
+  var args = [];
+  args.push('-optimize');
+  args.push('-progressive');
+  args.push('-outfile ' + this.tmp);
+  args.push(this.tmp);
+
+  return {
+    name: 'mozjpeg',
+    path: require('mozjpeg').path,
+    args: args
+  };
+};
+
 Optimizer.prototype.svgo = function () {
   var args = [];
   args.push(this.tmp);
@@ -213,6 +227,9 @@ Optimizer.prototype.getOptimizers = function (extension) {
       }
       if (this.options.jpegoptim) {
         optimizers.push(this.jpegoptim());
+      }
+      if (this.options.mozjpeg) {
+        optimizers.push(this.mozjpeg());
       }
       break;
     case '.gif':
