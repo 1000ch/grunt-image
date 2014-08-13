@@ -19,7 +19,7 @@ module.exports = function (grunt) {
       zopflipng: false,
       pngcrush: false,
       pngout: false,
-      jpegtran: true,
+      jpegtran: false,
       jpegRecompress: true,
       mozjpeg: false,
       jpegoptim: true,

@@ -130,6 +130,7 @@ Optimizer.prototype.jpegtran = function () {
   var args = [];
   args.push('-optimize');
   args.push('-progressive');
+  args.push('-outfile ' + this.tmp);
   args.push(this.tmp);
 
   return {
@@ -143,6 +144,9 @@ Optimizer.prototype.jpegRecompress = function () {
   var args = [];
   args.push('--progressive');
   args.push('--strip');
+  args.push('--quality medium');
+  args.push('--min 40');
+  args.push('--max 80');
   args.push(this.tmp);
   args.push(this.tmp);
 
@@ -160,7 +164,6 @@ Optimizer.prototype.jpegoptim = function () {
   args.push('--strip-iptc');
   args.push('--strip-icc');
   args.push('--all-progressive');
-  args.push('--dest=' + this.tmp);
   args.push(this.tmp);
 
   return {
@@ -229,7 +232,7 @@ Optimizer.prototype.getOptimizers = function (extension) {
         optimizers.push(this.jpegoptim());
       }
       if (this.options.mozjpeg) {
-        optimizers.push(this.mozjpeg());
+        //optimizers.push(this.mozjpeg());
       }
       break;
     case '.gif':
