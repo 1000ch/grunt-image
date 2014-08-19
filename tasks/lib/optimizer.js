@@ -177,7 +177,7 @@ Optimizer.prototype.mozjpeg = function () {
   var args = [];
   args.push('-optimize');
   args.push('-progressive');
-  args.push('-outfile ' + this.tmp);
+  //args.push('-outfile ' + this.tmp);
   args.push(this.tmp);
 
   return {
@@ -219,12 +219,14 @@ Optimizer.prototype.getOptimizers = function (extension) {
       if (this.options.advpng) {
         optimizers.push(this.advpng());
       }
-      //optimizers.push(this.pngout());
+      //if (this.options.pngout) {
+      //  optimizers.push(this.pngout());
+      //}
       break;
     case '.jpg':
-      if (this.options.jpegtran) {
-        optimizers.push(this.jpegtran());
-      }
+      //if (this.options.jpegtran) {
+      //  optimizers.push(this.jpegtran());
+      //}
       if (this.options.jpegRecompress) {
         optimizers.push(this.jpegRecompress());
       }
@@ -232,7 +234,7 @@ Optimizer.prototype.getOptimizers = function (extension) {
         optimizers.push(this.jpegoptim());
       }
       if (this.options.mozjpeg) {
-        //optimizers.push(this.mozjpeg());
+        optimizers.push(this.mozjpeg());
       }
       break;
     case '.gif':
