@@ -10,22 +10,6 @@ Optimize PNG, JPEG, GIF, SVG images with grunt task.
 [![devDependency Status](https://david-dm.org/1000ch/grunt-image/dev-status.svg)](https://david-dm.org/1000ch/grunt-image#info=devDependencies)
 [![Analytics](https://ga-beacon.appspot.com/UA-49530352-2/grunt-image/readme)](https://github.com/1000ch/grunt-image)
 
-## Dependency
-
-`jpeg-recompress` requires `libjpeg-turbo`, so you have to install some libraries before getting `grunt-image`.
-
-### Ubuntu
-
-```sh
-$ sudo apt-get install build-essential libjpeg-turbo8 libjpeg-turbo8-dev
-```
-
-### Mac OS X
-
-```sh
-$ brew install libjpeg libjpeg-turbo
-```
-
 ## Install
 
 ```sh
@@ -48,7 +32,7 @@ module.exports = function (grunt) {
           zopflipng: true,
           pngcrush: true,
           pngout: true,
-          jpegtran: true,
+          mozjpeg: true,
           jpegRecompress: true,
           jpegoptim: true,
           gifsicle: true,
