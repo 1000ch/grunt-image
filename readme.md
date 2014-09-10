@@ -72,7 +72,7 @@ When you omitted, the optimizer will be applied.
 
 ### pngquant
 
-- ✔ https://github.com/kevva/pngquant-bin
+- ✔ https://github.com/imagemin/pngquant-bin
 
 ```sh
 --speed N         speed/quality trade-off. 1=slow, 3=default, 11=fast & rough
@@ -81,7 +81,7 @@ When you omitted, the optimizer will be applied.
 
 ### optipng
 
-- ✔ https://github.com/yeoman/node-optipng-bin
+- ✔ https://github.com/imagemin/optipng-bin
 
 ```sh
 -fix           enable error recovery
@@ -92,7 +92,7 @@ When you omitted, the optimizer will be applied.
 
 ### advpng
 
-- ✔ https://github.com/1000ch/node-advpng-bin
+- ✔ https://github.com/imagemin/advpng-bin
 
 ```sh
 --recompress      Recompress the specified files
@@ -101,7 +101,7 @@ When you omitted, the optimizer will be applied.
 
 ### zopflipng
 
-- ✔ https://github.com/1000ch/node-zopflipng-bin
+- ✔ https://github.com/imagemin/zopflipng-bin
 
 ```sh
 -m: compress more: use more iterations (depending on file size) and use block split strategy 3
@@ -120,7 +120,7 @@ When you omitted, the optimizer will be applied.
 
 ### pngcrush
 
-- ✔ https://github.com/1000ch/node-pngcrush-bin
+- ✔ https://github.com/imagemin/pngcrush-bin
 
 ```sh
 -rem chunkname (or "alla" or "allb")
@@ -130,7 +130,7 @@ When you omitted, the optimizer will be applied.
 
 ### pngout
 
-- ✔ https://github.com/1000ch/node-pngout-bin
+- ✔ https://github.com/imagemin/pngout-bin
 
 ```sh
 -s# Select strategy. 0:Xtreme(default), 1:Intense, 2:Longest Match,
@@ -143,7 +143,7 @@ When you omitted, the optimizer will be applied.
 
 ### jpegtran
 
-- ✔ https://github.com/yeoman/node-jpegtran-bin
+- ✔ https://github.com/imagemin/jpegtran-bin
 
 ```sh
 -optimize      Optimize Huffman table (smaller file, but slow compression)
@@ -152,7 +152,7 @@ When you omitted, the optimizer will be applied.
 
 ### jpeg-recompress
 
-- ✔ https://github.com/1000ch/node-jpeg-recompress-bin
+- ✔ https://github.com/imagemin/jpeg-recompress-bin
 
 ```sh
 -p, --progressive             Set progressive JPEG output
@@ -161,7 +161,7 @@ When you omitted, the optimizer will be applied.
 
 ### jpegoptim
 
-- ✔ https://github.com/1000ch/node-jpegoptim-bin 
+- ✔ https://github.com/imagemin/jpegoptim-bin
 
 ```sh
 --strip-all       strip all (Comment & Exif) markers from output file
@@ -174,7 +174,7 @@ When you omitted, the optimizer will be applied.
 
 ### gifsicle
 
-- ✔ https://github.com/yeoman/node-gifsicle
+- ✔ https://github.com/imagemin/gifsicle-bin
 
 ```sh
 -i, --interlace               Turn on interlacing.
