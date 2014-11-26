@@ -177,7 +177,7 @@ Optimizer.prototype.mozjpeg = function () {
   var args = [];
   args.push('-optimize');
   args.push('-progressive');
-  //args.push('-outfile ' + this.tmp);
+  args.push('-outfile ' + this.tmp);
   args.push(this.tmp);
 
   return {
