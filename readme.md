@@ -190,4 +190,4 @@ When you omitted, the optimizer will be applied.
 
 ## License
 
-MIT
+MIT: http://1000ch.mit-license.org/

@@ -11,7 +11,10 @@
     "email": "shogo.sensui@gmail.com",
     "web": "http://github.com/1000ch"
   },
-  "license": "MIT",
+  "license": {
+    "type": "MIT",
+    "url": "http://1000ch.mit-license.org/"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
