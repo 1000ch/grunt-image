@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Optimize PNG, JPEG, GIF, SVG images.",
   "repository": {
     "type": "git",
@@ -29,14 +29,14 @@
     "advpng-bin": "^2.0.2",
     "async": "^0.9.0",
     "chalk": "^0.5.1",
-    "filesize": "^3.0.0",
+    "filesize": "^3.1.0",
     "gifsicle": "^2.0.1",
     "jpeg-recompress-bin": "^2.0.3",
     "jpegoptim-bin": "^2.0.1",
     "mkdirp": "^0.5.0",
     "mozjpeg": "^3.0.0",
     "optipng-bin": "^2.0.4",
-    "pngcrush-bin": "^2.2.0",
+    "pngcrush-bin": "^2.2.1",
     "pngquant-bin": "^2.0.3",
     "svgo": "^0.5.0",
     "tempfile": "^1.1.0",
@@ -46,7 +46,7 @@
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-jsvalidate": "^0.2.2"
   },
