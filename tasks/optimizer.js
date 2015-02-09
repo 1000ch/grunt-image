@@ -7,6 +7,8 @@ var execFile = require('child_process').execFile;
 var async = require('async');
 var tempfile = require('tempfile');
 
+var round10 = require('./round10');
+
 function Optimizer(param) {
   this.options = param.options || {};
   this.src = param.src;
@@ -251,26 +253,6 @@ Optimizer.prototype.getOptimizers = function (extension) {
   return optimizers;
 };
 
-// @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
-function _round10 (value, exp) {
-  // If the exp is undefined or zero...
-  if (typeof exp === 'undefined' || +exp === 0) {
-    return Math.round(value);
-  }
-  value = +value;
-  exp = +exp;
-  // If the value is not a number or the exp is not an integer...
-  if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
-    return NaN;
-  }
-  // Shift
-  value = value.toString().split('e');
-  value = Math.round(+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
-  // Shift back
-  value = value.toString().split('e');
-  return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
-}
-
 Optimizer.prototype.optimize = function (callback) {
 
   var src = this.src;
@@ -309,7 +291,7 @@ Optimizer.prototype.optimize = function (callback) {
       originalSize: originalSize,
       optimizedSize: optimizedSize,
       diffSize: diffSize,
-      diffPercent: _round10(100 * (diffSize / originalSize), -1)
+      diffPercent: round10(100 * (diffSize / originalSize), -1)
     });
   });
 };

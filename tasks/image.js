@@ -1,12 +1,12 @@
 "use strict";
 
-var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
 var async = require('async');
 var chalk = require('chalk');
 var filesize = require('filesize');
-var Optimizer = require('./lib/optimizer');
+
+var Optimizer = require('./optimizer');
 
 module.exports = function (grunt) {
   grunt.registerMultiTask('image', 'Optimize PNG, JPEG, GIF, SVG images.', function() {
