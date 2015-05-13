@@ -15,10 +15,6 @@ function Optimizer(param) {
   this.tmp = tempfile(path.extname(this.src));
   this.dest = param.dest || this.src;
   this.extension = path.extname(this.src);
-  this.optimizers = this.getOptimizers(this.extension);
-
-  // copy src file to tmp
-  fs.writeFileSync(this.tmp, fs.readFileSync(this.src));
 }
 
 Optimizer.prototype.optipng = function () {
@@ -47,7 +43,7 @@ Optimizer.prototype.pngquant = function () {
 
   return {
     name: 'pngquant',
-    path: require('pngquant-bin').path,
+    path: require('pngquant-bin'),
     args: args
   };
 };
@@ -154,7 +150,7 @@ Optimizer.prototype.jpegRecompress = function () {
 
   return {
     name: 'jpeg-recompress',
-    path: require('jpeg-recompress-bin').path,
+    path: require('jpeg-recompress-bin'),
     args: args
   };
 };
@@ -184,7 +180,7 @@ Optimizer.prototype.mozjpeg = function () {
 
   return {
     name: 'mozjpeg',
-    path: require('mozjpeg').path,
+    path: require('mozjpeg'),
     args: args
   };
 };
@@ -259,7 +255,9 @@ Optimizer.prototype.optimize = function (callback) {
   var tmp = this.tmp;
   var dest = this.dest;
 
-  var fns = this.optimizers.map(function (optimizer) {
+  fs.writeFileSync(this.tmp, fs.readFileSync(this.src));
+
+  var fns = this.getOptimizers(this.extension).map(function (optimizer) {
     return function (callback) {
       execFile(optimizer.path, optimizer.args, function () {
         callback(null, optimizer.name);
