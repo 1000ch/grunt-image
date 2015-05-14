@@ -71,7 +71,7 @@ Optimizer.prototype.pngcrush = function () {
 
   return {
     name: 'pngcrush',
-    path: require('pngcrush-bin').path,
+    path: require('pngcrush-bin'),
     args: args
   };
 };
@@ -103,7 +103,7 @@ Optimizer.prototype.zopflipng = function () {
 
   return {
     name: 'zopflipng',
-    path: require('zopflipng-bin').path,
+    path: require('zopflipng-bin'),
     args: args
   };
 };
