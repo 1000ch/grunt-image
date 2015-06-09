@@ -28,7 +28,7 @@ Optimizer.prototype.optipng = function () {
 
   return {
     name: 'optipng',
-    path: require('optipng-bin').path,
+    path: require('optipng-bin'),
     args: args
   };
 };
@@ -119,7 +119,7 @@ Optimizer.prototype.gifsicle = function () {
 
   return {
     name: 'gifsicle',
-    path: require('gifsicle').path,
+    path: require('gifsicle'),
     args: args
   };
 };
