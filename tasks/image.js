@@ -15,19 +15,17 @@ module.exports = function (grunt) {
     var options = this.options({
       pngquant: true,
       optipng: true,
-      advpng: true,
       zopflipng: false,
-      pngcrush: false,
-      pngout: false,
-      jpegRecompress: true,
-      mozjpeg: true,
+      advpng: false,
+      jpegRecompress: false,
       jpegoptim: true,
+      mozjpeg: true,
       gifsicle: true,
       svgo: true
     });
 
     async.eachLimit(this.files, 10, function (file, next) {
-      
+
       var src = file.src[0];
       var dest = file.dest;
 

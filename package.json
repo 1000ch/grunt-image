@@ -36,7 +36,6 @@
     "mkdirp": "^0.5.1",
     "mozjpeg": "^4.0.1",
     "optipng-bin": "^3.0.2",
-    "pngcrush-bin": "^3.0.0",
     "pngout-bin": "^2.0.1",
     "pngquant-bin": "^3.0.0",
     "svgo": "^0.5.6",

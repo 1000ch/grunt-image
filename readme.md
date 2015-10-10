@@ -26,17 +26,15 @@ module.exports = function (grunt) {
         options: {
           pngquant: true,
           optipng: true,
-          advpng: true,
-          zopflipng: true,
-          pngcrush: true,
-          pngout: true,
-          mozjpeg: true,
-          jpegRecompress: true,
+          zopflipng: false,
+          advpng: false,
+          jpegRecompress: false,
           jpegoptim: true,
+          mozjpeg: true,
           gifsicle: true,
           svgo: true
         },
-        files: { 
+        files: {
           'dist/img.png': 'src/img.png',
           'dist/img.jpg': 'src/img.jpg',
           'dist/img.gif': 'src/img.gif',
@@ -46,14 +44,14 @@ module.exports = function (grunt) {
       dynamic: {
         files: [{
           expand: true,
-          cwd: 'src/', 
+          cwd: 'src/',
           src: ['**/*.{png,jpg,gif,svg}'],
           dest: 'dist/'
         }]
       }
     }
   });
-    
+
   grunt.loadNpmTasks('grunt-image');
 };
 ```
