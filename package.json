@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Optimize PNG, JPEG, GIF, SVG images.",
   "repository": {
     "type": "git",
@@ -11,10 +11,7 @@
     "email": "shogo.sensui@gmail.com",
     "web": "http://github.com/1000ch"
   },
-  "license": {
-    "type": "MIT",
-    "url": "http://1000ch.mit-license.org/"
-  },
+  "license": "MIT",
   "engines": {
     "node": ">=0.10.0"
   },
