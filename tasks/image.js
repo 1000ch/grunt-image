@@ -14,9 +14,9 @@ module.exports = function (grunt) {
     var done = this.async();
     var options = this.options({
       pngquant: true,
-      optipng: true,
-      zopflipng: false,
-      advpng: false,
+      optipng: false,
+      zopflipng: true,
+      advpng: true,
       jpegRecompress: false,
       jpegoptim: true,
       mozjpeg: true,
