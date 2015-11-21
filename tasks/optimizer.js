@@ -56,7 +56,7 @@ Optimizer.prototype.advpng = function () {
 
   return {
     name: 'advpng',
-    path: require('advpng-bin').path,
+    path: require('advpng-bin'),
     args: args
   };
 };
@@ -72,21 +72,6 @@ Optimizer.prototype.pngcrush = function () {
   return {
     name: 'pngcrush',
     path: require('pngcrush-bin'),
-    args: args
-  };
-};
-
-Optimizer.prototype.pngout = function () {
-  var args = [];
-  args.push('-s0');
-  args.push('-k0');
-  args.push('-f0');
-  args.push(this.tmp);
-  args.push(this.tmp);
-
-  return {
-    name: 'pngout',
-    path: require('pngout-bin').path,
     args: args
   };
 };
@@ -124,20 +109,6 @@ Optimizer.prototype.gifsicle = function () {
   };
 };
 
-Optimizer.prototype.jpegtran = function () {
-  var args = [];
-  args.push('-optimize');
-  args.push('-progressive');
-  args.push('-outfile ' + this.tmp);
-  args.push(this.tmp);
-
-  return {
-    name: 'jpegtran',
-    path: require('jpegtran-bin').path,
-    args: args
-  };
-};
-
 Optimizer.prototype.jpegRecompress = function () {
   var args = [];
   args.push('--strip');
@@ -165,7 +136,7 @@ Optimizer.prototype.jpegoptim = function () {
 
   return {
     name: 'jpegoptim',
-    path: require('jpegoptim-bin').path,
+    path: require('jpegoptim-bin'),
     args: args
   };
 };
