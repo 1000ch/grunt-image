@@ -6,7 +6,6 @@ Optimize PNG, JPEG, GIF, SVG images with grunt task.
 [![NPM version](https://badge.fury.io/js/grunt-image.svg)](http://badge.fury.io/js/grunt-image)
 [![Dependency Status](https://david-dm.org/1000ch/grunt-image.svg)](https://david-dm.org/1000ch/grunt-image)
 [![devDependency Status](https://david-dm.org/1000ch/grunt-image/dev-status.svg)](https://david-dm.org/1000ch/grunt-image#info=devDependencies)
-[![Analytics](https://ga-beacon.appspot.com/UA-49530352-2/grunt-image/readme)](https://github.com/1000ch/grunt-image)
 
 ## Install
 
