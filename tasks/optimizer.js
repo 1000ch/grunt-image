@@ -11,7 +11,7 @@ var round10 = require('./round10');
 
 function Optimizer(param) {
   this.options = param.options || {};
-  this.src = param.src;
+  this.src = param.src || '';
   this.tmp = tempfile(path.extname(this.src));
   this.dest = param.dest || this.src;
   this.extension = path.extname(this.src);
