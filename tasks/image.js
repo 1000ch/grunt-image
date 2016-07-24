@@ -33,7 +33,7 @@ module.exports = function (grunt) {
       mkdirp.sync(path.dirname(dest));
 
       fsP.readFile(src)
-        .then(buffer => optimize(dest, buffer, options))
+        .then(buffer => optimize(buffer, options))
         .then(buffer => {
           let original = fs.statSync(src).size;
           let diff = original - buffer.length;
