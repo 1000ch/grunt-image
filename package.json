@@ -1,6 +1,6 @@
 {
   "name": "grunt-image",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Optimize PNG, JPEG, GIF, SVG images.",
   "repository": "1000ch/grunt-image",
   "author": {
