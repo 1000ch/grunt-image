@@ -8,8 +8,8 @@ const mkdirp = require('mkdirp');
 const eachAsync = require('each-async');
 const chalk = require('chalk');
 const filesize = require('filesize');
-const optimize = require('../optimize');
-const round10 = require('../round10');
+const optimize = require('../lib/optimize');
+const round10 = require('../lib/round10');
 
 module.exports = function (grunt) {
   grunt.registerMultiTask('image', 'Optimize PNG, JPEG, GIF, SVG images.', function () {
