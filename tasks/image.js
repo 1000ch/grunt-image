@@ -21,6 +21,7 @@ module.exports = function (grunt) {
       jpegRecompress: false,
       jpegoptim: true,
       mozjpeg: true,
+      guetzli: false,
       gifsicle: true,
       svgo: true
     });

@@ -9,7 +9,7 @@ Optimize PNG, JPEG, GIF, SVG images with grunt task.
 
 ## Install
 
-```sh
+```bash
 $ npm install --save-dev grunt-image
 ```
 
@@ -29,6 +29,7 @@ module.exports = function (grunt) {
           jpegRecompress: false,
           jpegoptim: true,
           mozjpeg: true,
+          guetzli: false,
           gifsicle: true,
           svgo: true
         },
