@@ -1,4 +1,5 @@
 # [grunt-image](https://npmjs.org/package/grunt-image)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/1000ch/grunt-image?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Optimize PNG, JPEG, GIF, SVG images with grunt task.
 
