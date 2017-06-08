@@ -49,7 +49,7 @@
     "mkdirp": "^0.5.1",
     "mozjpeg": "^4.1.1",
     "optipng-bin": "^4.0.0",
-    "pify": "^2.3.0",
+    "pify": "^3.0.0",
     "pngquant-bin": "^3.1.0",
     "svgo": "^0.7.0",
     "zopflipng-bin": "^4.0.0"
