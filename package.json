@@ -35,15 +35,15 @@
   "dependencies": {
     "chalk": "^2.0.0",
     "each-async": "^1.1.1",
-    "exec-buffer": "^3.0.0",
+    "exec-buffer": "^3.2.0",
     "execa": "^0.7.0",
-    "filesize": "^3.3.0",
+    "filesize": "^3.5.0",
     "gifsicle": "^3.0.4",
     "guetzli": "^1.0.1",
     "is-gif": "^1.0.0",
     "is-jpg": "^1.0.0",
-    "is-png": "^1.0.0",
-    "is-svg": "^2.0.1",
+    "is-png": "^1.1.0",
+    "is-svg": "^2.1.0",
     "jpeg-recompress-bin": "^3.0.1",
     "jpegoptim-bin": "^3.0.0",
     "mkdirp": "^0.5.1",
@@ -51,13 +51,13 @@
     "optipng-bin": "^4.0.0",
     "pify": "^3.0.0",
     "pngquant-bin": "^3.1.0",
-    "svgo": "^0.7.0",
+    "svgo": "^0.7.2",
     "zopflipng-bin": "^4.0.0"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
-    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-nodeunit": "^1.0.0"
   }
 }
