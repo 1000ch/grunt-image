@@ -15,8 +15,8 @@ module.exports = function (grunt) {
   grunt.registerMultiTask('image', 'Optimize PNG, JPEG, GIF, SVG images.', function () {
     const done = this.async();
     const options = this.options({
-      pngquant: true,
       optipng: false,
+      pngquant: true,
       zopflipng: true,
       jpegRecompress: false,
       mozjpeg: true,
