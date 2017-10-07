@@ -17,14 +17,14 @@ $ npm install --save-dev grunt-image
 
 This is an example of `gruntfile.js`.
 
-```js
+```javascript
 module.exports = function (grunt) {
   grunt.initConfig({
     image: {
       static: {
         options: {
-          pngquant: true,
           optipng: false,
+          pngquant: true,
           zopflipng: true,
           jpegRecompress: false,
           mozjpeg: true,
@@ -54,11 +54,24 @@ module.exports = function (grunt) {
 };
 ```
 
-`options` attributes are optional. If you don't want to set as optimizer, set false. When you omitted, the optimizer will be applied.
+You can configure parameters applied to each optimizers such as following:
+
+```javascript
+options: {
+  optipng: ['-i 1', '-strip all', '-fix', '-o7', '-force'],
+  pngquant: ['--speed=1', '--force', 256],
+  zopflipng: ['-y', '--lossy_8bit', '--lossy_transparent'],
+  jpegRecompress: ['--strip', '--quality', 'medium', '--min', 40, '--max', 80],
+  mozjpeg: ['-optimize', '-progressive'],
+  guetzli: ['--quality', 85],
+  gifsicle: ['--optimize'],
+  svgo: ['--enable', 'cleanupIDs', '--disable', 'convertColors']
+}
+```
 
 ## Result
 
-![](https://raw.github.com/1000ch/grunt-image/master/screenshot/terminal.png)
+![grunt-image result](https://raw.github.com/1000ch/grunt-image/master/screenshot/terminal.png)
 
 ## License
 
