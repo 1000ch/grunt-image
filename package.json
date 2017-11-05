@@ -49,6 +49,7 @@
     "optipng-bin": "^4.0.0",
     "pify": "^3.0.0",
     "pngquant-bin": "^3.1.0",
+    "round10": "^1.0.3",
     "svgo": "^1.0.2",
     "zopflipng-bin": "^4.0.0"
   },
