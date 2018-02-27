@@ -42,7 +42,7 @@
     "is-gif": "^1.0.0",
     "is-jpg": "^1.0.0",
     "is-png": "^1.1.0",
-    "is-svg": "^2.1.0",
+    "is-svg": "^3.0.0",
     "jpeg-recompress-bin": "^3.0.1",
     "mkdirp": "^0.5.1",
     "mozjpeg": "^5.0.0",
