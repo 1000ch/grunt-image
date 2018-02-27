@@ -8,7 +8,7 @@ const mkdirp = require('mkdirp');
 const eachAsync = require('each-async');
 const chalk = require('chalk');
 const filesize = require('filesize');
-const round10 = require('round10');
+const { round10 } = require('round10');
 const optimize = require('../lib/optimize');
 
 module.exports = function (grunt) {
