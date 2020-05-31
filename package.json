@@ -46,7 +46,6 @@
     "mkdirp": "^1.0.3",
     "mozjpeg": "^7.0.0",
     "optipng-bin": "^7.0.0",
-    "pify": "^5.0.0",
     "pngquant-bin": "^5.0.0",
     "round10": "^1.0.3",
     "svgo": "^1.2.2",

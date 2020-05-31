@@ -1,15 +1,17 @@
 "use strict";
 
+const { promisify } = require('util');
 const fs = require('fs');
 const path = require('path');
-const pify = require('pify');
-const fsP = pify(fs);
 const mkdirp = require('mkdirp');
 const eachAsync = require('each-async');
 const chalk = require('chalk');
 const filesize = require('filesize');
 const { round10 } = require('round10');
 const optimize = require('../lib/optimize');
+
+const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
 
 module.exports = function (grunt) {
   grunt.registerMultiTask('image', 'Optimize PNG, JPEG, GIF, SVG images.', function () {
@@ -31,7 +33,7 @@ module.exports = function (grunt) {
       // make directory if does not exist
       mkdirp.sync(path.dirname(dest));
 
-      fsP.readFile(src)
+      readFile(src)
         .then(buffer => optimize(buffer, options))
         .then(buffer => {
           let original = fs.statSync(src).size;
@@ -39,8 +41,8 @@ module.exports = function (grunt) {
           let diffPercent = round10(100 * (diff / original), -1);
 
           if (diff <= 0) {
-            return fsP.readFile(src)
-              .then(buffer => fsP.writeFile(dest, buffer))
+            return readFile(src)
+              .then(buffer => writeFile(dest, buffer))
               .then(() => {
                 grunt.log.writeln(
                   chalk.green('- ') + file.src + chalk.gray(' ->') +
@@ -48,7 +50,7 @@ module.exports = function (grunt) {
                 );
               });
           } else {
-            return fsP.writeFile(dest, buffer)
+            return writeFile(dest, buffer)
               .then(() => {
                 grunt.log.writeln(
                   chalk.green('✔ ') + file.src + chalk.gray(' ->') +
