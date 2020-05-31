@@ -13,7 +13,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "xo && grunt test"
   },
   "bugs": {
     "url": "https://github.com/1000ch/grunt-image/issues"
@@ -55,6 +55,10 @@
     "grunt": "^1.0.4",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-nodeunit": "^2.0.0"
+    "grunt-contrib-nodeunit": "^2.0.0",
+    "xo": "^0.30.0"
+  },
+  "xo": {
+    "space": 2
   }
 }
