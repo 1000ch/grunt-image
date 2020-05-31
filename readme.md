@@ -28,7 +28,6 @@ module.exports = function (grunt) {
           zopflipng: true,
           jpegRecompress: false,
           mozjpeg: true,
-          guetzli: false,
           gifsicle: true,
           svgo: true
         },
@@ -63,7 +62,6 @@ options: {
   zopflipng: ['-y', '--lossy_8bit', '--lossy_transparent'],
   jpegRecompress: ['--strip', '--quality', 'medium', '--min', 40, '--max', 80],
   mozjpeg: ['-optimize', '-progressive'],
-  guetzli: ['--quality', 85],
   gifsicle: ['--optimize'],
   svgo: ['--enable', 'cleanupIDs', '--disable', 'convertColors']
 }
