@@ -20,7 +20,6 @@ module.exports = function (grunt) {
       zopflipng: true,
       jpegRecompress: false,
       mozjpeg: true,
-      guetzli: false,
       gifsicle: true,
       svgo: true
     });

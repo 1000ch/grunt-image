@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=10"
   },
   "scripts": {
     "test": "grunt test"
@@ -33,25 +33,24 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "each-async": "^1.1.1",
     "exec-buffer": "^3.2.0",
     "filesize": "^6.0.1",
     "gifsicle": "^5.0.0",
-    "guetzli": "^2.0.0",
     "is-gif": "^3.0.0",
     "is-jpg": "^2.0.0",
     "is-png": "^2.0.0",
     "is-svg": "^4.1.0",
-    "jpeg-recompress-bin": "^4.0.0",
+    "jpeg-recompress-bin": "^5.1.0",
     "mkdirp": "^1.0.3",
-    "mozjpeg": "^6.0.0",
-    "optipng-bin": "^6.0.0",
+    "mozjpeg": "^7.0.0",
+    "optipng-bin": "^7.0.0",
     "pify": "^5.0.0",
     "pngquant-bin": "^5.0.0",
     "round10": "^1.0.3",
     "svgo": "^1.2.2",
-    "zopflipng-bin": "^5.0.0"
+    "zopflipng-bin": "^6.0.0"
   },
   "devDependencies": {
     "grunt": "^1.0.4",
