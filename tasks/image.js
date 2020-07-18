@@ -1,14 +1,11 @@
 'use strict';
-
 const {promisify} = require('util');
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp');
 const eachAsync = require('each-async');
-const chalk = require('chalk');
-const filesize = require('filesize');
-const {round10} = require('round10');
 const optimize = require('../lib/optimize');
+const log = require('../lib/log');
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
@@ -35,27 +32,14 @@ module.exports = function (grunt) {
         mkdirp.sync(path.dirname(dest));
 
         const originalBuffer = await readFile(src);
-        const originalSize = originalBuffer.length;
         const optimizedBuffer = await optimize(originalBuffer, options);
+
+        const originalSize = originalBuffer.length;
         const optimizedSize = optimizedBuffer.length;
+        log(src, originalSize, optimizedSize);
 
-        const diffSize = originalSize - optimizedSize;
-        const diffPercent = round10(100 * (diffSize / originalSize), -1);
-
-        if (diffSize <= 0) {
-          grunt.log.writeln(
-            chalk.green('- ') + file.src + chalk.gray(' ->') +
-            chalk.gray(' Cannot improve upon ') + chalk.cyan(filesize(originalSize))
-          );
-        } else {
+        if (originalSize - optimizedSize > 0) {
           await writeFile(dest, optimizedBuffer);
-
-          grunt.log.writeln(
-            chalk.green('✔ ') + file.src + chalk.gray(' ->') +
-              chalk.gray(' before=') + chalk.yellow(filesize(originalSize)) +
-              chalk.gray(' after=') + chalk.cyan(filesize(optimizedSize)) +
-              chalk.gray(' reduced=') + chalk.green.underline(filesize(diffSize) + '(' + diffPercent + '%)')
-          );
         }
 
         next();
