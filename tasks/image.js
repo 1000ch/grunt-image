@@ -34,11 +34,11 @@ module.exports = function (grunt) {
         const originalBuffer = await readFile(src);
         const optimizedBuffer = await optimize(originalBuffer, options);
 
-        const originalSize = originalBuffer.length;
-        const optimizedSize = optimizedBuffer.length;
-        log(src, originalSize, optimizedSize);
+        const originalBytes = originalBuffer.length;
+        const optimizedBytes = optimizedBuffer.length;
+        log(src, originalBytes, optimizedBytes);
 
-        if (originalSize - optimizedSize > 0) {
+        if (originalBytes - optimizedBytes > 0) {
           await writeFile(dest, optimizedBuffer);
         }
 
