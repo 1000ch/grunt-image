@@ -1,11 +1,6 @@
-# [grunt-image](https://npmjs.org/package/grunt-image)
+# [grunt-image](https://npmjs.org/package/grunt-image) [![Build Status](https://travis-ci.org/1000ch/grunt-image.svg?branch=master)](https://travis-ci.org/1000ch/grunt-image)
 
 Optimize PNG, JPEG, GIF, SVG images with grunt task.
-
-[![Build Status](https://travis-ci.org/1000ch/grunt-image.svg?branch=master)](https://travis-ci.org/1000ch/grunt-image)
-[![NPM version](https://badge.fury.io/js/grunt-image.svg)](http://badge.fury.io/js/grunt-image)
-[![Dependency Status](https://david-dm.org/1000ch/grunt-image.svg)](https://david-dm.org/1000ch/grunt-image)
-[![devDependency Status](https://david-dm.org/1000ch/grunt-image/dev-status.svg)](https://david-dm.org/1000ch/grunt-image?type=dev)
 
 ## Install
 
