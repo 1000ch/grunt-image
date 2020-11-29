@@ -4,13 +4,13 @@
   "description": "Optimize PNG, JPEG, GIF, SVG images.",
   "repository": "1000ch/grunt-image",
   "author": {
-    "name": "1000ch",
+    "name": "Shogo Sensui",
     "email": "shogosensui@gmail.com",
     "web": "https://github.com/1000ch"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "test": "xo && grunt test"
