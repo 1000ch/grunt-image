@@ -1,4 +1,4 @@
-# grunt-image [![Build Status](https://travis-ci.org/1000ch/grunt-image.svg?branch=master)](https://travis-ci.org/1000ch/grunt-image)
+# grunt-image ![GitHub Actions Status](https://github.com/1000ch/grunt-image/workflows/test/badge.svg?branch=master)
 
 Optimize PNG, JPEG, GIF, SVG images with grunt task.
 
