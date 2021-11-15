@@ -43,7 +43,7 @@
     "is-svg": "^4.3.1",
     "jpeg-recompress-bin": "^5.1.1",
     "mkdirp": "^1.0.4",
-    "mozjpeg": "^7.0.0",
+    "mozjpeg": "^8.0.0",
     "optipng-bin": "^7.0.0",
     "pngquant-bin": "^6.0.0",
     "pretty-bytes": "^5.6.0",
